@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "MsSql": "Server=localhost;Database=Library;Trusted_Connection=true;Encrypt=false;TrustServerCertificate=false\",\"",
+    "MsSqlExpress": "Server=localhost\\SQLEXPRESS;Database=Library;Trusted_Connection=true;Encrypt=false;TrustServerCertificate=false"
+  }
+}
