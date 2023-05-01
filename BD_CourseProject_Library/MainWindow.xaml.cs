@@ -23,6 +23,8 @@ namespace BD_CourseProject_Library
         public MainWindow()
         {
             InitializeComponent();
+            DbInitialiser.Initialise(new LibraryDbContext());
+
         }
     }
 }

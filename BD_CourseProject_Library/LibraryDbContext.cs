@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Persistence.Models;
-using Persistence.Models.Configurations;
+﻿using BD_CourseProject_Library.Models;
+using BD_CourseProject_Library.Models.Configurations;
+using Microsoft.EntityFrameworkCore;
 
-namespace Persistence
+namespace BD_CourseProject_Library
 {
     public class LibraryDbContext: DbContext, ILibraryDbContext
     {
@@ -88,25 +88,6 @@ namespace Persistence
                     new Book { Id = 8, Name = "Im glad my mom died", AuthorId = 6, GenreId = 3, Quantity = 2 },
                     new Book { Id = 9, Name = "Love, Pamela", AuthorId = 7, GenreId = 2, Quantity = 11 });
 
-            modelBuilder.Entity<Client>().HasData(
-                    new Client { Id = 1, Name = "Maxim", Surname = "Rudolovskiy", PhoneNumber = "+375296261410" },
-                    new Client { Id = 1, Name = "Oleg", Surname = "Ivanov", PhoneNumber = "+375296261411" },
-                    new Client { Id = 1, Name = "Daniil", Surname = "Mihadiuk", PhoneNumber = "+375296958473" },
-                    new Client { Id = 1, Name = "Dmitry", Surname = "Kudlasevich", PhoneNumber = "+375255019461" },
-                    new Client { Id = 1, Name = "Denis", Surname = "Gavrilov", PhoneNumber = "+375335671023" },
-                    new Client { Id = 1, Name = "Kirill", Surname = "Lashukevich", PhoneNumber = "+375445671753" },
-                    new Client { Id = 1, Name = "Alexandr", Surname = "Drozdov", PhoneNumber = "+375294756471" },
-                    new Client { Id = 1, Name = "Pavel", Surname = "Milkevich", PhoneNumber = "+375294763841" });
-
-            modelBuilder.Entity<Record>().HasData(
-                new Record { Id = 1, BookId = 1, RentDateStart = DateTime.Parse("17-Dec-2022"), RentDateEnd = DateTime.Parse("17-Mar-2023"), ClientId = 2 },
-                new Record { Id = 2, BookId = 3, RentDateStart = DateTime.Parse("23-Dec-2023"), RentDateEnd = DateTime.Parse("17-Mar-2023"), ClientId = 4 },
-                new Record { Id = 3, BookId = 4, RentDateStart = DateTime.Parse("13-Jan-2023"), RentDateEnd = DateTime.Parse("25-Apr-2023"), ClientId = 3 },
-                new Record { Id = 4, BookId = 5, RentDateStart = DateTime.Parse("19-Jan-2023"), RentDateEnd = DateTime.Parse("22-May-2023"), ClientId = 3 },
-                new Record { Id = 5, BookId = 6, RentDateStart = DateTime.Parse("15-Fab-2023"), RentDateEnd = DateTime.Parse("21-May-2023"), ClientId = 6 },
-                new Record { Id = 6, BookId = 7, RentDateStart = DateTime.Parse("03-Jan-2023"), RentDateEnd = DateTime.Parse("08-Jun-2023"), ClientId = 5 },
-                new Record { Id = 7, BookId = 2, RentDateStart = DateTime.Parse("22-Dec-2022"), RentDateEnd = DateTime.Parse("01-Jul-2023"), ClientId = 1 }
-                );
             base.OnModelCreating(modelBuilder);
 
         }
