@@ -1,16 +1,20 @@
 ﻿using BD_CourseProject_Library.Models;
 using BD_CourseProject_Library.Models.Configurations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Documents;
 
 namespace BD_CourseProject_Library
 {
-    public class LibraryDbContext: DbContext, ILibraryDbContext
+    public class LibraryDbContext: DbContext//, ILibraryDbContext
     {
-        DbSet<Author> ILibraryDbContext.Authors { get; set; }
-        DbSet<Book> ILibraryDbContext.Books { get; set; }
-        DbSet<Client> ILibraryDbContext.Clients { get; set; }
-        DbSet<Genre> ILibraryDbContext.Genres { get; set; }
-        DbSet<Record> ILibraryDbContext.Records { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Record> Records { get; set; }
 
         public LibraryDbContext() { }
 
@@ -90,6 +94,18 @@ namespace BD_CourseProject_Library
 
             base.OnModelCreating(modelBuilder);
 
+        }
+
+        public List<string[]> GetBooks()
+        {
+            List<string[]> ListBooks = new List<string[]>();
+            
+            foreach (var item in Books)
+            {
+                ListBooks.Add(new string[]{ item.Id.ToString(), item.Name, item.AuthorId.ToString(), item.GenreId.ToString(), item.Quantity.ToString() });
+                //stringBuilder.Clear();
+            }
+            return ListBooks;
         }
     }
 }

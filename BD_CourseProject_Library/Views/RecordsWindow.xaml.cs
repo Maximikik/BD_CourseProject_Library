@@ -10,26 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BD_CourseProject_Library
+namespace BD_CourseProject_Library.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for RecordsWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RecordsWindow : Window
     {
-        public MainWindow()
+        public RecordsWindow()
         {
             InitializeComponent();
-            DbInitialiser.Initialise(new LibraryDbContext());
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            new Menu().Show();
         }
     }
 }

@@ -1,0 +1,65 @@
+﻿<Window x:Class="BD_CourseProject_Library.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BD_CourseProject_Library"
+        mc:Ignorable="d"
+        Title="Menu" Height="450" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="30" Grid.Column="1" Grid.Row="0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center">Editor mode</TextBlock>
+        <Border Grid.Row="1" Grid.Column="1" CornerRadius="6" BorderBrush="Gray" Background="AntiqueWhite" BorderThickness="2" DockPanel.Dock="Top">
+            <WrapPanel  Margin="30" HorizontalAlignment="Center" Background="AliceBlue" VerticalAlignment="Center">
+                <Border CornerRadius="6" BorderBrush="Gray" BorderThickness="3">
+                    <StackPanel  Background="AliceBlue">
+                    <Button Margin="5" Width="200" Name="ButtonAuthors" Click="ButtonAuthors_Click">Authors</Button>
+                    <Button Margin="5" Width="200" Name="ButtonBooks" Click="ButtonBooks_Click">Books</Button>
+                    <Button Margin="5" Width="200" Name="ButtonGenres" Click="ButtonGenres_Click">Genres</Button>
+                    <Button Margin="5" Width="200" Name="ButtonClients" Click="ButtonClients_Click">Clients</Button>
+                        <Button Margin="5" Width="200" Name="ButtonRecords" Click="ButtonRecords_Click">Records</Button>
+                    </StackPanel>
+                </Border>
+                <Border CornerRadius="3" BorderBrush="AliceBlue" BorderThickness="2">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Margin="5" FontSize="15" TextWrapping="Wrap" Width="300">
+                            id, Author name
+                        </TextBlock>
+                        <TextBlock Margin="5" FontSize="15" TextWrapping="Wrap" Width="300">
+                            id, Book name, Author id, Genre id, Quantity
+                        </TextBlock>
+                        <TextBlock Margin="5" FontSize="15" TextWrapping="Wrap" Width="300">
+                            id, Genre name
+                        </TextBlock>
+                        <TextBlock Margin="5" FontSize="15" TextWrapping="Wrap" Width="300">
+                            id, Client name, surname, phone number
+                        </TextBlock>
+                        <TextBlock Margin="5" FontSize="15" TextWrapping="Wrap" Width="300">
+                            id, Book id, Rent date start, End, Client id
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+        <StackPanel>
+                <TextBlock Margin="5" FontSize="20" TextWrapping="Wrap" Width="300">
+                    This is an information system of library.
+                    You can use it to work with data of library database.
+                    There are buttons with names of tables in db.
+                </TextBlock>
+            </StackPanel>
+            </WrapPanel>
+        </Border>
+
+    </Grid>
+</Window>

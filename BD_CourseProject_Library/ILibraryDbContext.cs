@@ -7,7 +7,7 @@ namespace BD_CourseProject_Library
 {
     public interface ILibraryDbContext
     {
-        DbSet<Author> Authors { get; set; }
+        public DbSet<Author> Authors { get; set; }
         DbSet<Book> Books { get; set; }
         DbSet<Client> Clients { get; set; }
         DbSet<Genre> Genres { get; set; }

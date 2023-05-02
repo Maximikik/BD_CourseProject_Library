@@ -1,9 +1,16 @@
 ﻿<Application x:Class="BD_CourseProject_Library.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:BD_CourseProject_Library"
+             xmlns:local="clr-namespace:BD_CourseProject_Library" 
+             xmlns:Views="clr-namespace:BD_CourseProject_Library.Views"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <!--<DataTemplate DataType="{x:Type local:LibraryDbContext}">
+                <Views:BooksWindow/>
+            </DataTemplate>-->
+        </ResourceDictionary>
+
     </Application.Resources>
-</Application>
+</Application>              
+                        
