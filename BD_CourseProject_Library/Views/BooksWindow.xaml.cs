@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BD_CourseProject_Library.Controllers.Books.Add;
+using BD_CourseProject_Library.Controllers.Books.Delete;
+using BD_CourseProject_Library.Controllers.Books.Edit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +32,65 @@ namespace BD_CourseProject_Library.Views
             MainList.ItemsSource = _context.Books.ToList();
         }
 
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var query = new AddBookQuery()
+            {
+                Name = textBoxName.Text,
+                Author = textBoxAuthor.Text,
+                Genre = textBoxGenre.Text,
+                Quantity = Convert.ToInt32(textBoxQuantity.Text)
+            };
+
+            if (!AddBook.Add(_context, query))
+            {
+                MessageBox.Show("Error!");
+                ClearAddTextBoxes();
+            }
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var query = new DeleteBookQuery()
+            {
+                id = Convert.ToInt32(textBoxIdDelete.Text)
+            };
+
+            if (!DeleteBook.Delete(_context, query))
+            {
+                MessageBox.Show("Error!");
+                ClearDeleteTextBox();
+            }
+        }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+            var query = new EditBookQuery()
+            {
+                Id = textBoxIdEdit.Text,
+                Name = textBoxNameEdit.Text,
+                AuthorId = textBoxAuthorEdit.Text,
+                GenreId = textBoxGenreEdit.Text,
+                Quantity = textBoxQuantityEdit.Text
+            };
+
+            EditBook.Edit(_context, query);
+        }
+
+        private void ClearAddTextBoxes()
+        {
+            textBoxAuthor.Clear();
+            textBoxName.Clear();
+            textBoxGenre.Clear();
+            textBoxQuantity.Clear();
+        }
+
         
+
+        private void ClearDeleteTextBox()
+        {
+            textBoxIdDelete.Clear();
+        }
     }
 }
