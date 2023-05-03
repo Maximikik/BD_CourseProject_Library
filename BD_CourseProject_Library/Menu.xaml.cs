@@ -32,26 +32,31 @@ namespace BD_CourseProject_Library
         private void ButtonAuthors_Click(object sender, RoutedEventArgs e)
         {
             new AuthorsWindow().Show();
+            this.Close();
         }
 
         private void ButtonBooks_Click(object sender, RoutedEventArgs e)
         {
             new BooksWindow().Show();
+            this.Close();
         }
 
-        private void ButtonGenres_Click(object sender, RoutedEventArgs e)
+        private async void ButtonGenres_Click(object sender, RoutedEventArgs e)
         {
             new GenresWindow().Show();
+            this.Close();
         }
 
         private void ButtonClients_Click(object sender, RoutedEventArgs e)
         {
             new ClientsWindow().Show();
+            this.Close();
         }
 
         private void ButtonRecords_Click(object sender, RoutedEventArgs e)
         {
             new RecordsWindow().Show();
+            this.Close();
         }
     }
 }

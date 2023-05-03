@@ -10,7 +10,7 @@ namespace BD_CourseProject_Library.Controllers.Books.Edit
         private static int _genreId { get; set; }
         private static int _quantity { get; set; }
 
-        public static bool Edit(LibraryDbContext _context, EditAuthorCommand command)
+        public static bool Edit(LibraryDbContext _context, EditBookCommand command)
         {
             Validate(command);
 
@@ -45,7 +45,7 @@ namespace BD_CourseProject_Library.Controllers.Books.Edit
             return false;
         }
 
-        private static void Validate(EditAuthorCommand command)
+        private static void Validate(EditBookCommand command)
         {
             if (Int32.TryParse(command.Id, out int a) && a > 0)
             {

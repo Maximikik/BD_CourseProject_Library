@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BD_CourseProject_Library.Controllers.Books.Edit
 {
-    class EditAuthorCommand
+    class EditBookCommand
     {
         public string Id { get; set; } = null!;
         public string Name { get; set; } = null!;

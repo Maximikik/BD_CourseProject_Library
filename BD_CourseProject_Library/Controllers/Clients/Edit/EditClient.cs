@@ -21,6 +21,7 @@ namespace BD_CourseProject_Library.Controllers.Clients.Edit
                     if (_name != string.Empty) element.Name = _name;
                     if (_surname != string.Empty) element.Surname = _surname;
                     if (_phoneNumber != string.Empty) element.PhoneNumber = _phoneNumber;
+                    _context.SaveChanges();
                     return true;
                 }
             }

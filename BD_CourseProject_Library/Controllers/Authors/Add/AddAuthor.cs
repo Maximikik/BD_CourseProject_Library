@@ -18,7 +18,7 @@ namespace BD_CourseProject_Library.Controllers.Authors.Add
 
         private static bool Validate(AddAuthorCommand command)
         {
-            if (command.authorName != null && command.authorName.Length <= 30 && !command.authorName.All(char.IsDigit)) 
+            if (command.authorName != string.Empty && command.authorName.Length <= 30 && !command.authorName.All(char.IsDigit)) 
             {
                 return true;
             }

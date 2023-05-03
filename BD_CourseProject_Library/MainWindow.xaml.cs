@@ -30,6 +30,7 @@ namespace BD_CourseProject_Library
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             new Menu().Show();
+            this.Close();
         }
     }
 }

@@ -2,11 +2,141 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BD_CourseProject_Library.Views"
         mc:Ignorable="d"
-        Title="GenresWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="GenresWindow" Height="450" Width="900">
+    <Grid Background="MediumPurple">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Border Margin="7" BorderBrush="Black" BorderThickness="2" CornerRadius="3" Grid.Row="1" Grid.Column="3">
+                <ListView Foreground="White" FontSize="15" Name="MainList"  HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                            <GridViewColumn Header="Genre" DisplayMemberBinding="{Binding Name}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+            <Button Grid.Column="0" Grid.Row="0" Name="ButtonAdd"
+                BorderThickness="3"
+                Margin="5"
+                Width="auto"
+                Height="auto"
+                Content="Add record"
+                Foreground="White"
+                FontSize="20"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignOutlinedLightButton}"
+                ToolTip="MaterialDesignOutlinedButton" Click="ButtonAdd_Click" />
+            <Button Grid.Column="1" Grid.Row="0" Name="ButtonEdit"
+                BorderThickness="3"
+                Margin="5"
+                Width="auto"
+                Height="auto"
+                Content="Edit record"
+                Foreground="White"
+                FontSize="20"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignOutlinedLightButton}"
+                ToolTip="MaterialDesignOutlinedButton" Click="ButtonEdit_Click" />
+            <Button Grid.Column="2" Grid.Row="0" Name="ButtonDelete"
+                BorderThickness="3"
+                Margin="5"
+                Width="auto"
+                Height="auto"
+                Content="Delete record"
+                Foreground="White"
+                FontSize="20"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignOutlinedLightButton}"
+                ToolTip="MaterialDesignOutlinedButton" Click="ButtonDelete_Click" />
+            <Border  Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="4"
+                     Height="auto">
+                <StackPanel Height="auto">
+                    <Label FontSize="20">Fill the data below to add</Label>
+                    <TextBox
+                        Margin="5"
+                        materialDesign:HintAssist.Hint="Genre name"
+                        materialDesign:HintAssist.Foreground="LightGray"
+                        MaxWidth="400"
+                        VerticalAlignment="Top"
+                        AcceptsReturn="True"
+                        Name="textBoxName"
+                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+
+            <Border  Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="4"
+                     Height="auto">
+                <StackPanel Height="auto">
+                    <Label FontSize="20">Fill the data below to edit</Label>
+                    <TextBox
+                        Margin="5"
+                        materialDesign:HintAssist.Hint="Genre id"
+                        materialDesign:HintAssist.Foreground="LightGray"
+                        MaxWidth="400"
+                        VerticalAlignment="Top"
+                        AcceptsReturn="True"
+                        Name="textBoxIdEdit"
+                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        TextWrapping="Wrap" />
+                    <TextBox
+                        Margin="5"
+                        materialDesign:HintAssist.Hint="Genre name"
+                        materialDesign:HintAssist.Foreground="LightGray"
+                        MaxWidth="400"
+                        VerticalAlignment="Top"
+                        AcceptsReturn="True"
+                        Name="textBoxNameEdit"
+                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+
+            <Border  Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="4"
+                     Height="auto">
+                <StackPanel Height="auto">
+                    <Label FontSize="20">Fill the id below to delete</Label>
+                    <TextBox
+                        Margin="5"
+                        materialDesign:HintAssist.Hint="Genre id"
+                        materialDesign:HintAssist.Foreground="LightGray"
+                        MaxWidth="400"
+                        VerticalAlignment="Top"
+                        AcceptsReturn="True"
+                        Name="textBoxIdDelete"
+                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+            <Button Grid.Column="0" Grid.Row="2" Name="ButtonBack"
+                BorderThickness="3"
+                Margin="5"
+                Width="auto"
+                Height="auto"
+                Content="Back"
+                Foreground="White"
+                FontSize="20"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignOutlinedLightButton}" Click="ButtonBack_Click"></Button>
+        </Grid>
     </Grid>
 </Window>

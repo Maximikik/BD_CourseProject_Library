@@ -6,7 +6,7 @@ namespace BD_CourseProject_Library.Controllers.Books.Delete
     {
         public static bool Delete(LibraryDbContext _context, DeleteBookCommand command)
         {
-            var element = _context.Books.FirstOrDefault( entity => entity.Id == command.id );
+            var element = _context.Books.FirstOrDefault( entity => entity.Id == command.Id );
 
             if (element != null ) 
             {

@@ -2,6 +2,6 @@
 {
     public class AddAuthorCommand
     {
-        public string? authorName { get; set; } = null!;
+        public string authorName { get; set; } = null!;
     }
 }

@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BD_CourseProject_Library.Controllers.Records.Edit
 {
-    class EditRecordCommand
+    public class EditRecordCommand
     {
+        public string Id { get; set; } = null!;
+        public string BookId { get; set; } = null!;
+
+        public string RentDateStart { get; set; } = null!;
+
+        public string RentDateEnd { get; set; } = null!;
+
+        public string ClientId { get; set; } = null!;
     }
 }

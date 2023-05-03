@@ -4,7 +4,7 @@ namespace BD_CourseProject_Library.Controllers.Genres.Add
 {
     static class AddGenre
     {
-        static bool Add(LibraryDbContext _context, AddGenreCommand command)
+        public static bool Add(LibraryDbContext _context, AddGenreCommand command)
         {
             if (Validator(command))
             {

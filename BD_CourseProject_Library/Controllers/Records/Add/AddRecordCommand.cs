@@ -4,12 +4,12 @@ namespace BD_CourseProject_Library.Controllers.Records.Add
 {
     public class AddRecordCommand
     {
-        public int BookId { get; set; }
+        public string BookName { get; set; } = null!;
 
-        public DateTime RentDateStart { get; set; }
+        public string RentDateStart { get; set; } = null!;
 
-        public DateTime RentDateEnd { get; set; }
+        public string RentDateEnd { get; set; } = null!;
 
-        public int ClientId { get; set; }
+        public string ClientId { get; set; } = null!;
     }
 }

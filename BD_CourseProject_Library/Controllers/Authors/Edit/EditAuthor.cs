@@ -38,7 +38,7 @@ namespace BD_CourseProject_Library.Controllers.Authors.Edit
                 }
                 else return false;
 
-                if (command.Author.Length <= 30 && !command.Author.All(char.IsDigit) && command.Author != null)
+                if (command.Author.Length <= 30 && !command.Author.All(char.IsDigit) && command.Author != string.Empty)
                 {
                     _authorName = command.Author;
                 }

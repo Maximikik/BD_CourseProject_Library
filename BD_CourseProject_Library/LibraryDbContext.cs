@@ -1,11 +1,8 @@
 ﻿using BD_CourseProject_Library.Models;
 using BD_CourseProject_Library.Models.Configurations;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows.Documents;
 
 namespace BD_CourseProject_Library
 {
@@ -118,16 +115,6 @@ namespace BD_CourseProject_Library
 
         }
 
-        public List<string[]> GetBooks()
-        {
-            List<string[]> ListBooks = new List<string[]>();
-            
-            foreach (var item in Books)
-            {
-                ListBooks.Add(new string[]{ item.Id.ToString(), item.Name, item.AuthorId.ToString(), item.GenreId.ToString(), item.Quantity.ToString() });
-                //stringBuilder.Clear();
-            }
-            return ListBooks;
-        }
+        
     }
 }

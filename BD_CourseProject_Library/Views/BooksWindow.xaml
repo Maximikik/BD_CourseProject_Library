@@ -197,6 +197,17 @@
                         TextWrapping="Wrap" />
                 </StackPanel>
             </Border>
+            <Button Grid.Column="0" Grid.Row="2" Name="ButtonBack"
+                BorderThickness="3"
+                Margin="5"
+                Width="auto"
+                Height="auto"
+                Content="Back"
+                Foreground="White"
+                FontSize="20"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignOutlinedLightButton}"
+                ToolTip="MaterialDesignOutlinedButton" Click="ButtonBack_Click" />
         </Grid>
     </Grid>
 </Window>

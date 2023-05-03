@@ -1,19 +1,10 @@
-﻿using BD_CourseProject_Library.Controllers.Books.Add;
-using BD_CourseProject_Library.Controllers.Books.Delete;
+﻿using BD_CourseProject_Library.Controllers.Books.Delete;
+using BD_CourseProject_Library.Controllers.Books.Add;
 using BD_CourseProject_Library.Controllers.Books.Edit;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using BD_CourseProject_Library.Models;
 
 namespace BD_CourseProject_Library.Views
 {
@@ -45,28 +36,40 @@ namespace BD_CourseProject_Library.Views
             if (!AddBook.Add(_context, query))
             {
                 MessageBox.Show("Error!");
-                ClearAddTextBoxes();
             }
+            else
+            {
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+            }
+            ClearAddTextBoxes();
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            var query = new DeleteBookCommand()
-            {
-                id = Convert.ToInt32(textBoxIdDelete.Text)
-            };
+            var idInt = -1;
 
-            if (!DeleteBook.Delete(_context, query))
+            if (Int32.TryParse(textBoxIdDelete.Text, out idInt))
             {
-                MessageBox.Show("Error!");
-                ClearDeleteTextBox();
+                var command = new DeleteBookCommand { Id = idInt };
+
+                if (!DeleteBook.Delete(_context, command))
+                {
+                    MessageBox.Show("Error!");
+                }
+                else
+                {
+                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                }
             }
+            else MessageBox.Show("Error!");
+
+            ClearDeleteTextBox();
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
 
-            var query = new EditAuthorCommand()
+            var command = new EditBookCommand()
             {
                 Id = textBoxIdEdit.Text,
                 Name = textBoxNameEdit.Text,
@@ -75,7 +78,16 @@ namespace BD_CourseProject_Library.Views
                 Quantity = textBoxQuantityEdit.Text
             };
 
-            EditBook.Edit(_context, query);
+            if(!EditBook.Edit(_context, command))
+            {
+                MessageBox.Show("Error!");
+            }
+            else
+            {
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+            }
+
+            ClearEditTextBoxes();
         }
 
         private void ClearAddTextBoxes()
@@ -86,11 +98,24 @@ namespace BD_CourseProject_Library.Views
             textBoxQuantity.Clear();
         }
 
-        
+        private void ClearEditTextBoxes()
+        {
+            textBoxIdEdit.Clear();
+            textBoxNameEdit.Clear();
+            textBoxAuthorEdit.Clear();
+            textBoxGenreEdit.Clear();
+            textBoxQuantityEdit.Clear();
+        }
 
         private void ClearDeleteTextBox()
         {
             textBoxIdDelete.Clear();
+        }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            new Menu().Show();
+            this.Hide();
         }
     }
 }

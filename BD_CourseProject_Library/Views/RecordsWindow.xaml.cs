@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BD_CourseProject_Library.Controllers.Records.Add;
+using BD_CourseProject_Library.Controllers.Records.Delete;
+using BD_CourseProject_Library.Controllers.Records.Edit;
+using BD_CourseProject_Library.Models;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace BD_CourseProject_Library.Views
 {
@@ -19,9 +13,107 @@ namespace BD_CourseProject_Library.Views
     /// </summary>
     public partial class RecordsWindow : Window
     {
+        readonly LibraryDbContext _context;
         public RecordsWindow()
         {
             InitializeComponent();
+
+            _context = new LibraryDbContext();
+
+            MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+        }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var query = new AddRecordCommand()
+            {
+                BookName = textBoxName.Text,
+                RentDateStart = textBoxRentStart.Text,
+                RentDateEnd= textBoxRentEnd.Text,
+                ClientId = textBoxClientId.Text
+            };
+
+            if (!AddRecord.Add(_context, query))
+            {
+                MessageBox.Show("Error!");
+            }
+            else
+            {
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+            }
+            ClearAddTextBoxes();
+        }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var command = new EditRecordCommand()
+            {
+                Id = textBoxIdEdit.Text,
+                BookId = textBoxBookIdEdit.Text,
+                ClientId = textBoxClientIdEdit.Text,
+                RentDateStart = textBoxRentDateStartEdit.Text,
+                RentDateEnd = textBoxRentDateEndEdit.Text
+            };
+
+            if (!EditRecord.Edit(_context, command))
+            {
+                MessageBox.Show("Error!");
+            }
+            else
+            {
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+            }
+            ClearEditTextBoxes();
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var idInt = -1;
+
+            if (Int32.TryParse(textBoxIdDelete.Text, out idInt))
+            {
+                var command = new DeleteRecordCommand { Id = idInt };
+
+                if (!DeleteRecord.Delete(_context, command))
+                {
+                    MessageBox.Show("Error!");
+                }
+                else
+                {
+                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                }
+            }
+            else MessageBox.Show("Error!");
+
+            ClearDeleteTextBox();
+        }
+
+        private void ClearAddTextBoxes()
+        {
+            textBoxName.Clear();
+            textBoxClientId.Clear();
+            textBoxRentStart.Clear();
+            textBoxRentEnd.Clear();
+        }
+
+        private void ClearEditTextBoxes()
+        {
+            textBoxIdEdit.Clear();
+            textBoxBookIdEdit.Clear();
+            textBoxClientIdEdit.Clear();
+            textBoxRentDateEndEdit.Clear();
+            textBoxRentDateStartEdit.Clear();
+        }
+
+        private void ClearDeleteTextBox()
+        {
+            textBoxIdDelete.Clear();
+        }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            new Menu().Show();
+            this.Hide();
         }
     }
 }

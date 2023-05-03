@@ -6,17 +6,28 @@ namespace BD_CourseProject_Library.Controllers.Books.Add
     {
         public static bool Add(LibraryDbContext _context, AddBookCommand command)
         {
-            var authorId = (from Id in _context.Authors where Id.Name == command.Author select Id);
-            var genreId = (from Id in _context.Genres where Id.Name == command.Genre select Id);
-            
-            if (authorId != null && genreId != null && !command.Name.All(char.IsDigit)) 
+            var authorId = _context.Authors.FirstOrDefault( entity => entity.Name == command.Author );
+            var genreId = _context.Genres.FirstOrDefault(entity => entity.Name == command.Genre);
+
+            if (authorId != null && genreId != null && !command.Name.Any(char.IsDigit)) 
             {
-                _context.Books.Add(new Models.Book { Name = command.Name, AuthorId = authorId.First().Id, GenreId = genreId.First().Id, Quantity = command.Quantity });
+                _context.Books.Add(new Models.Book { Name = command.Name, AuthorId = authorId.Id, GenreId = genreId.Id, Quantity = command.Quantity });
                 _context.SaveChanges();
                 return true;
             }
 
             return false;
+        }
+
+        static private bool Validate(AddBookCommand command)
+        {
+            if (command.Genre != string.Empty && !command.Genre.Any(char.IsDigit) &&
+                command.Author != string.Empty && !command.Author.Any(char.IsDigit) &&
+                command.Quantity > 0 && command.Name != string.Empty && !command.Name.All(char.IsDigit))
+            {
+                return true;
+            }
+            else return false;
         }
     }
 }
