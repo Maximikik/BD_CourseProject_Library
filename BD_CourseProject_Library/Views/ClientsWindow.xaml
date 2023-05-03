@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BD_CourseProject_Library.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ClientsWindow" Height="550" Width="1200">
+        Title="ClientsWindow" Height="700" Width="1300">
     <Grid Background="MediumPurple">
         <Grid>
             <Grid.ColumnDefinitions>

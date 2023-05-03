@@ -39,6 +39,7 @@ namespace BD_CourseProject_Library.Views
             }
             else
             {
+                MainList.ItemsSource = null;
                 MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
             }
             ClearAddTextBoxes();
@@ -61,6 +62,7 @@ namespace BD_CourseProject_Library.Views
             }
             else
             {
+                MainList.ItemsSource = null;
                 MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
             }
             ClearEditTextBoxes();
@@ -80,6 +82,7 @@ namespace BD_CourseProject_Library.Views
                 }
                 else
                 {
+                    MainList.ItemsSource = null;
                     MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
                 }
             }

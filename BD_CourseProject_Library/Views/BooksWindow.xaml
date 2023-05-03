@@ -25,13 +25,14 @@
                 <ListView Foreground="White" FontSize="15" Name="MainList"  HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                            <GridViewColumn Header="Id"  DisplayMemberBinding="{Binding Id}"/>
                             <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
                             <GridViewColumn Header="Author Id" DisplayMemberBinding="{Binding AuthorId}"/>
                             <GridViewColumn Header="Genre Id" DisplayMemberBinding="{Binding GenreId}"/>
                             <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}"/>
                         </GridView>
                     </ListView.View>
+
                 </ListView>
             </Border>
             <Button Grid.Column="0" Grid.Row="0" Name="ButtonAdd"
@@ -67,7 +68,7 @@
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonDelete_Click" />
-            <Border  Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="4"
+            <Border  Grid.Row="1"  Grid.Column="0" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="7"
                      Height="auto">
                 <StackPanel Height="auto">
                     <Label FontSize="20">Fill the data below to add</Label>
@@ -118,7 +119,7 @@
                 </StackPanel>
             </Border>
 
-            <Border  Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="4"
+            <Border  Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="7"
                      Height="auto">
                 <StackPanel Height="auto">
                     <Label FontSize="20">Fill the data below to edit</Label>
@@ -180,7 +181,7 @@
                 </StackPanel>
             </Border>
 
-            <Border  Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="4"
+            <Border  Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="7"
                      Height="auto">
                 <StackPanel Height="auto">
                     <Label FontSize="20">Fill the id below to delete</Label>
@@ -197,6 +198,7 @@
                         TextWrapping="Wrap" />
                 </StackPanel>
             </Border>
+
             <Button Grid.Column="0" Grid.Row="2" Name="ButtonBack"
                 BorderThickness="3"
                 Margin="5"
@@ -208,6 +210,56 @@
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonBack_Click" />
+            <Border Grid.Column="4" Grid.Row="0" Margin="7" CornerRadius="3" BorderThickness="3" BorderBrush="Black">
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="30">Order by</Label>
+            </Border>
+            <WrapPanel Grid.Column="4" Grid.Row="0">
+                <Label Foreground="White" Margin="20" FontSize="20">Desc</Label>
+                <ToggleButton Name="DescOrAsc"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 30 0 0"
+                      Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="True"
+                      ToolTip="Default ToggleButton Style" Click="DescOrAscChecked"/>
+                <Label Foreground="White" Margin="20" FontSize="20">Asc</Label>
+            </WrapPanel>
+
+            <StackPanel Grid.Column="4" Grid.Row="0"  HorizontalAlignment="Center" Background="#AA64F0"
+                        VerticalAlignment="Bottom"
+                        Margin="20"
+                        Orientation="Horizontal">
+
+                <RadioButton Name="RadioId"
+                        Margin="0 0 25 4"
+                        Content="Id"
+                        Foreground="White"
+                        IsChecked="False" 
+                        Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="OrderId_Click" />
+                <RadioButton Name="RadioName"
+                        Margin="0 0 25 4"
+                        Foreground="White"
+                        Content="Name"
+                        IsChecked="False" 
+                        Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="OrderName_Click" />
+                <RadioButton Name="RadioAuthorId"
+                        Margin="0 0 50 4"
+                        Foreground="White"
+                        Content="Author Id"
+                        IsChecked="False" 
+                        Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="OrderAuthorId_Click" />
+                <RadioButton Name="RadioGenreId"
+                        Margin="0 0 50 4"
+                            Foreground="White"
+                        Content="Genre Id"
+                        IsChecked="False" 
+                        Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="OrderGenreId_Click" />
+
+                <RadioButton Name="RadioQuantity"
+                        Margin="0 0 45 4"
+                            Foreground="White"
+                        Content="Quantity"
+                        IsChecked="False" 
+                        Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="OrderQuantity_Click" />
+            </StackPanel>
+
         </Grid>
     </Grid>
 </Window>

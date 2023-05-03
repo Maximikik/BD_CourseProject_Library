@@ -37,6 +37,7 @@ namespace BD_CourseProject_Library.Views
                 }
                 else
                 {
+                    MainList.ItemsSource = null;
                     MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
                 }
             }
@@ -59,6 +60,7 @@ namespace BD_CourseProject_Library.Views
                 }
                 else
                 {
+                    MainList.ItemsSource = null;
                     MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
                 }
             }
@@ -79,6 +81,7 @@ namespace BD_CourseProject_Library.Views
                 }
                 else
                 {
+                    MainList.ItemsSource = null;
                     MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
                 }
             }

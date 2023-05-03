@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 
 namespace BD_CourseProject_Library.Controllers.Records.Add
@@ -22,7 +23,6 @@ namespace BD_CourseProject_Library.Controllers.Records.Add
                     return true;
                 }
             }
-
             return false;
         }
 

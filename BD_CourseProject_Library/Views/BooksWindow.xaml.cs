@@ -19,7 +19,7 @@ namespace BD_CourseProject_Library.Views
             InitializeComponent();
         
             _context = new LibraryDbContext();
-
+            //var books = _context.Books.OrderBy(x => x.Name).ToList();
             MainList.ItemsSource = _context.Books.ToList();
         }
 
@@ -39,6 +39,7 @@ namespace BD_CourseProject_Library.Views
             }
             else
             {
+                MainList.ItemsSource = null;
                 MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
             }
             ClearAddTextBoxes();
@@ -58,6 +59,7 @@ namespace BD_CourseProject_Library.Views
                 }
                 else
                 {
+                    MainList.ItemsSource = null;
                     MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
                 }
             }
@@ -84,6 +86,7 @@ namespace BD_CourseProject_Library.Views
             }
             else
             {
+                MainList.ItemsSource = null;
                 MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
             }
 
@@ -116,6 +119,139 @@ namespace BD_CourseProject_Library.Views
         {
             new Menu().Show();
             this.Hide();
+        }
+
+        private void OrderId_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Books.OrderBy(x => x.Id).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Books.OrderByDescending(x => x.Id).ToList();
+            }
+        }
+
+        private void OrderName_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Books.OrderBy(x => x.Name).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Books.OrderByDescending(x => x.Name).ToList();
+            }
+        }
+
+        private void OrderAuthorId_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Books.OrderBy(x => x.AuthorId).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Books.OrderByDescending(x => x.AuthorId).ToList();
+            }
+        }
+
+        private void OrderGenreId_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Books.OrderBy(x => x.GenreId).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Books.OrderByDescending(x => x.GenreId).ToList();
+            }
+        }
+
+        private void OrderQuantity_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Books.OrderBy(x => x.Quantity).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Books.OrderByDescending(x => x.Quantity).ToList();
+            }
+        }
+
+        private void DescOrAscChecked(object sender, RoutedEventArgs e)
+        {
+            if (RadioId != null && RadioName != null && RadioAuthorId != null && RadioGenreId != null && RadioQuantity != null)
+            {
+                if ((bool)DescOrAsc.IsChecked)
+                {
+                    if ((bool)RadioId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Books.OrderBy(x => x.Id).ToList();
+                    }
+                    else if ((bool)RadioName.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Books.OrderBy(x => x.Name).ToList();
+                    }
+                    else if ((bool)RadioAuthorId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Books.OrderBy(x => x.AuthorId).ToList();
+                    }
+                    else if ((bool)RadioGenreId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Books.OrderBy(x => x.GenreId).ToList();
+                    }
+                    else if ((bool)RadioQuantity.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Books.OrderBy(x => x.Quantity).ToList();
+                    }
+                }
+                else if (!(bool)DescOrAsc.IsChecked)
+                {
+                    if (!(bool)RadioId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Books.OrderByDescending(x => x.Id).ToList();
+                    }
+                    else if (!(bool)RadioName.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Books.OrderByDescending(x => x.Name).ToList();
+                    }
+                    else if (!(bool)RadioAuthorId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Books.OrderByDescending(x => x.AuthorId).ToList();
+                    }
+                    else if (!(bool)RadioGenreId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Books.OrderByDescending(x => x.GenreId).ToList();
+                    }
+                    else if (!(bool)RadioQuantity.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Books.OrderByDescending(x => x.Quantity).ToList();
+                    }
+                }
+            }
         }
     }
 }

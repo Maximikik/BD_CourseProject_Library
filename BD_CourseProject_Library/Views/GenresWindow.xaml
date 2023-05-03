@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BD_CourseProject_Library.Views"
         mc:Ignorable="d"
-        Title="GenresWindow" Height="450" Width="900">
+        Title="GenresWindow" Height="700" Width="1300">
     <Grid Background="MediumPurple">
         <Grid>
             <Grid.ColumnDefinitions>

@@ -35,7 +35,7 @@ namespace BD_CourseProject_Library.Views
 
             _context = new LibraryDbContext();
 
-            MainList.ItemsSource = _context.Authors.ToList();
+            MainList.ItemsSource = _context.Genres.ToList();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
@@ -50,6 +50,7 @@ namespace BD_CourseProject_Library.Views
                 }
                 else
                 {
+                    MainList.ItemsSource = null;
                     MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
                 }
             }
@@ -72,6 +73,7 @@ namespace BD_CourseProject_Library.Views
                 }
                 else
                 {
+                    MainList.ItemsSource = null;
                     MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
                 }
             }
@@ -94,6 +96,7 @@ namespace BD_CourseProject_Library.Views
                 }
                 else
                 {
+                    MainList.ItemsSource = null;
                     MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
                 }
             }

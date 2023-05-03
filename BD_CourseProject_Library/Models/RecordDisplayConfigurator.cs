@@ -11,7 +11,7 @@ namespace BD_CourseProject_Library.Models
 
             foreach (var item in _context.Records)
             {
-                ListRecords.Add(new RecordDisplay { Id = item.Id, BookId = item.Id, ClientId = item.Id, RentDateStart = item.RentDateStart.ToString("MM:dd:yyyy"),
+                ListRecords.Add(new RecordDisplay { Id = item.Id, BookId = item.BookId, ClientId = item.ClientId, RentDateStart = item.RentDateStart.ToString("dd:MM:yyyy"),
                 RentDateEnd=item.RentDateEnd.ToString("MM:dd:yyyy")});
             }
 
