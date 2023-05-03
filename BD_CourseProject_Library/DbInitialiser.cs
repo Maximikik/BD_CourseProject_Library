@@ -6,7 +6,5 @@
         {
             context.Database.EnsureCreated();
         }
-
-
     }
 }

@@ -1,19 +1,5 @@
-﻿using BD_CourseProject_Library.Models;
-using BD_CourseProject_Library.Views;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BD_CourseProject_Library.Views;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace BD_CourseProject_Library
 {
@@ -22,41 +8,51 @@ namespace BD_CourseProject_Library
     /// </summary>
     public partial class Menu : Window
     {
-        LibraryDbContext libraryDbContext;
+        AuthorsWindow authors { get; set; }
+        BooksWindow books { get; set; }
+        GenresWindow genres { get; set; }
+        ClientsWindow clients { get; set; }
+        RecordsWindow records { get; set; }
+
+
         public Menu()
         {
             InitializeComponent();
-            libraryDbContext = new LibraryDbContext();
+            authors = new AuthorsWindow();
+            books = new BooksWindow();
+            genres = new GenresWindow();
+            clients = new ClientsWindow();
+            records = new RecordsWindow();
         }
 
         private void ButtonAuthors_Click(object sender, RoutedEventArgs e)
         {
-            new AuthorsWindow().Show();
-            this.Close();
+            authors.Show();
+            this.Hide();
         }
 
         private void ButtonBooks_Click(object sender, RoutedEventArgs e)
         {
-            new BooksWindow().Show();
-            this.Close();
+            books.Show();
+            this.Hide();
         }
 
         private async void ButtonGenres_Click(object sender, RoutedEventArgs e)
         {
-            new GenresWindow().Show();
-            this.Close();
+            genres.Show();
+            this.Hide();
         }
 
         private void ButtonClients_Click(object sender, RoutedEventArgs e)
         {
-            new ClientsWindow().Show();
-            this.Close();
+            clients.Show();
+            this.Hide();
         }
 
         private void ButtonRecords_Click(object sender, RoutedEventArgs e)
         {
-            new RecordsWindow().Show();
-            this.Close();
+            records.Show();
+            this.Hide();
         }
     }
 }
