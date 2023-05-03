@@ -1,12 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace BD_CourseProject_Library.Controllers.Genres.Add
 {
-    internal class AddGenreHandler
+    static class AddGenre
     {
+        static bool Add(LibraryDbContext _context, AddGenreCommand command)
+        {
+            if (Validator(command))
+            {
+                _context.Genres.Add(new Models.Genre() { Name = command.Name });
+                _context.SaveChanges();
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool Validator(AddGenreCommand command)
+        {
+            if (command != null && command.Name.Length <= 30
+                && !command.Name.All(char.IsDigit))
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

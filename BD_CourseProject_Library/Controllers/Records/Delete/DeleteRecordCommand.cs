@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BD_CourseProject_Library.Controllers.Books.Delete
+namespace BD_CourseProject_Library.Controllers.Records.Delete
 {
-    class DeleteBookQuery
+    class DeleteRecordCommand
     {
-        public int id { get; set; }
     }
 }

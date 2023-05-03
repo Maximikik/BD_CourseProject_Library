@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BD_CourseProject_Library.Controllers.Clients.Add
+namespace BD_CourseProject_Library.Controllers.Clients.Delete
 {
-    internal class AddClientQuery
+    public class DeleteClientCommand
     {
+        public int Id { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BD_CourseProject_Library.Controllers.Records.Add
+namespace BD_CourseProject_Library.Controllers.Records.Edit
 {
-    internal class AddRecordQuery
+    class EditRecordCommand
     {
     }
 }

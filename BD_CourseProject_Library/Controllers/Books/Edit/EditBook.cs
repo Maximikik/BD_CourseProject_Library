@@ -1,11 +1,5 @@
-﻿using BD_CourseProject_Library.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BD_CourseProject_Library.Controllers.Books.Edit
 {
@@ -16,17 +10,17 @@ namespace BD_CourseProject_Library.Controllers.Books.Edit
         private static int _genreId { get; set; }
         private static int _quantity { get; set; }
 
-        public static bool Edit(LibraryDbContext _context, EditBookQuery query)
+        public static bool Edit(LibraryDbContext _context, EditAuthorCommand command)
         {
-            Validate(query);
+            Validate(command);
 
             var element = _context.Books.FirstOrDefault(entity => entity.Id == _Id);
 
             if (_Id != -1 && element != null)
             {
-                if (query.Name != string.Empty)
+                if (command.Name != string.Empty && !command.Name.All(char.IsDigit))
                 {
-                    element.Name = query.Name;
+                    element.Name = command.Name;
                 }
 
                 if (_authorId != -1)
@@ -44,34 +38,34 @@ namespace BD_CourseProject_Library.Controllers.Books.Edit
                     element.Quantity = _quantity;
                 }
 
-                _context.SaveChangesAsync(CancellationToken.None);
+                _context.SaveChanges();
 
                 return true;
             }
             return false;
         }
 
-        private static void Validate(EditBookQuery query)
+        private static void Validate(EditAuthorCommand command)
         {
-            if (Int32.TryParse(query.Id, out int a) && a > 0)
+            if (Int32.TryParse(command.Id, out int a) && a > 0)
             {
                 _Id = a;
             }
             else _Id = -1;
 
-            if (Int32.TryParse(query.AuthorId, out int b) && b > 0)
+            if (Int32.TryParse(command.AuthorId, out int b) && b > 0)
             {
                 _authorId = b;
             }
             else _authorId = -1;
 
-            if (Int32.TryParse(query.GenreId, out int c) && c > 0)
+            if (Int32.TryParse(command.GenreId, out int c) && c > 0)
             {
                 _genreId = c;
             }
             else _genreId = -1;
 
-            if (Int32.TryParse(query.Quantity, out int d) && d > 0)
+            if (Int32.TryParse(command.Quantity, out int d) && d > 0)
             {
                 _quantity = d;
             }

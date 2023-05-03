@@ -23,5 +23,20 @@ namespace BD_CourseProject_Library.Views
         {
             InitializeComponent();
         }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BD_CourseProject_Library.Controllers.Genres.Add
+namespace BD_CourseProject_Library.Controllers.Books.Delete
 {
-    internal class AddGenreQuery
+    class DeleteBookCommand
     {
+        public int id { get; set; }
     }
 }

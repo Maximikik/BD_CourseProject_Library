@@ -12,9 +12,9 @@ namespace BD_CourseProject_Library.Models
 
         [ForeignKey(nameof(Book.Id))]
         public virtual int BookId { get; set; }
-
+        [Column(TypeName = "Date")]
         public DateTime RentDateStart { get; set; }
-
+        [Column(TypeName = "Date")]
         public DateTime RentDateEnd { get; set; }
 
         [ForeignKey(nameof(Client.Id))]

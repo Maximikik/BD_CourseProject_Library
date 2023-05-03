@@ -34,7 +34,7 @@ namespace BD_CourseProject_Library.Views
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var query = new AddBookQuery()
+            var query = new AddBookCommand()
             {
                 Name = textBoxName.Text,
                 Author = textBoxAuthor.Text,
@@ -51,7 +51,7 @@ namespace BD_CourseProject_Library.Views
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            var query = new DeleteBookQuery()
+            var query = new DeleteBookCommand()
             {
                 id = Convert.ToInt32(textBoxIdDelete.Text)
             };
@@ -66,7 +66,7 @@ namespace BD_CourseProject_Library.Views
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
 
-            var query = new EditBookQuery()
+            var query = new EditAuthorCommand()
             {
                 Id = textBoxIdEdit.Text,
                 Name = textBoxNameEdit.Text,

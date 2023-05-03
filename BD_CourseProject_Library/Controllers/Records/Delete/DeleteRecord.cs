@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BD_CourseProject_Library.Controllers.Authors.Add
+namespace BD_CourseProject_Library.Controllers.Records.Delete
 {
-    internal class AddAuthorQuery
+    class DeleteRecord
     {
     }
 }
