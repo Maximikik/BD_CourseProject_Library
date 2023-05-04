@@ -207,6 +207,57 @@
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonBack_Click" />
+
+            <Border Grid.Column="4" Grid.Row="0" Margin="7" CornerRadius="3" BorderThickness="3" BorderBrush="Black">
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="30">Order by</Label>
+            </Border>
+            <WrapPanel Grid.Column="4" Grid.Row="0">
+                <Label Foreground="White" Margin="20" FontSize="20">Desc</Label>
+                <ToggleButton Name="DescOrAsc"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 30 0 0"
+                      Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="True"
+                      ToolTip="Default ToggleButton Style" Click="DescOrAsc_Click"/>
+                <Label Foreground="White" Margin="20" FontSize="20">Asc</Label>
+            </WrapPanel>
+
+            <StackPanel Grid.Column="4" Grid.Row="0"  HorizontalAlignment="Center" Background="#AA64F0"
+                        VerticalAlignment="Bottom"
+                        Margin="20"
+                        Orientation="Horizontal">
+
+                <RadioButton Name="RadioId"
+                        Margin="0 0 25 4"
+                        Content="Id"
+                        Foreground="White"
+                        IsChecked="False" 
+                        Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="RadioId_Checked"/> 
+                <RadioButton Name="RadioBookId"
+                        Margin="0 0 25 4"
+                        Foreground="White"
+                        Content="Name"
+                        IsChecked="False" 
+                        Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="RadioBookId_Checked"/>
+                <RadioButton Name="RadioRentStart"
+                        Margin="0 0 50 4"
+                        Foreground="White"
+                        Content="Rent Start"
+                        IsChecked="False" 
+                        Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="RadioRentStart_Checked"/>
+                <RadioButton Name="RadioRentEnd"
+                        Margin="0 0 50 4"
+                            Foreground="White"
+                        Content="Rent End"
+                        IsChecked="False" 
+                        Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="RadioRentEnd_Checked"/>
+
+                <RadioButton Name="RadioClientId"
+                        Margin="0 0 45 4"
+                            Foreground="White"
+                        Content="Client Id"
+                        IsChecked="False" 
+                        Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="RadioClientId_Checked"/>
+            </StackPanel>
+
         </Grid>
     </Grid>
 </Window>

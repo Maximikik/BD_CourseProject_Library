@@ -29,7 +29,7 @@ namespace BD_CourseProject_Library.Views
             {
                 BookName = textBoxName.Text,
                 RentDateStart = textBoxRentStart.Text,
-                RentDateEnd= textBoxRentEnd.Text,
+                RentDateEnd = textBoxRentEnd.Text,
                 ClientId = textBoxClientId.Text
             };
 
@@ -117,6 +117,147 @@ namespace BD_CourseProject_Library.Views
         {
             new Menu().Show();
             this.Hide();
+        }
+
+        private void RadioId_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderBy(x => x.Id).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderByDescending(x => x.Id).ToList();
+            }
+        }
+
+        private void RadioBookId_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderBy(x => x.BookId).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderByDescending(x => x.BookId).ToList();
+            }
+        }
+
+        private void RadioRentStart_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderBy(x => x.RentDateStart).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderByDescending(x => x.RentDateStart).ToList();
+            }
+        }
+
+        private void RadioRentEnd_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderBy(x => x.RentDateEnd).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderByDescending(x => x.RentDateEnd).ToList();
+            }
+        }
+
+        private void RadioClientId_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderBy(x => x.ClientId).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderByDescending(x => x.ClientId).ToList();
+            }
+        }
+
+        private void DescOrAsc_Click(object sender, RoutedEventArgs e)
+        {
+            if (RadioId != null && RadioBookId != null && RadioClientId != null && RadioRentStart != null && RadioRentEnd != null)
+            {
+                if ((bool)DescOrAsc.IsChecked)
+                {
+                    if ((bool)RadioId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderBy(x => x.Id).ToList();
+                    }
+                    else if ((bool)RadioBookId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderBy(x => x.BookId).ToList();
+
+                    }
+                    else if ((bool)RadioClientId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderBy(x => x.ClientId).ToList();
+
+                    }
+                    else if ((bool)RadioRentStart.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderBy(x => x.RentDateStart).ToList();
+
+                    }
+                    else if ((bool)RadioRentEnd.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderBy(x => x.RentDateEnd).ToList();
+
+                    }
+                }
+                else if (!(bool)DescOrAsc.IsChecked)
+                {
+
+                    if ((bool)RadioId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderByDescending(x => x.Id).ToList();
+                    }
+                    else if ((bool)RadioBookId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderByDescending(x => x.BookId).ToList();
+
+                    }
+                    else if ((bool)RadioClientId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderByDescending(x => x.ClientId).ToList();
+
+                    }
+                    else if ((bool)RadioRentStart.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderByDescending(x => x.RentDateStart).ToList();
+
+                    }
+                    else if ((bool)RadioRentEnd.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context).OrderByDescending(x => x.RentDateEnd).ToList();
+                    }
+                }
+            }
         }
     }
 }

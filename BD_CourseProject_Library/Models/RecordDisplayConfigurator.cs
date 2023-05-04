@@ -11,8 +11,14 @@ namespace BD_CourseProject_Library.Models
 
             foreach (var item in _context.Records)
             {
-                ListRecords.Add(new RecordDisplay { Id = item.Id, BookId = item.BookId, ClientId = item.ClientId, RentDateStart = item.RentDateStart.ToString("dd:MM:yyyy"),
-                RentDateEnd=item.RentDateEnd.ToString("MM:dd:yyyy")});
+                ListRecords.Add(new RecordDisplay
+                {
+                    Id = item.Id,
+                    BookId = item.BookId,
+                    ClientId = item.ClientId,
+                    RentDateStart = DateOnly.FromDateTime(item.RentDateStart),
+                    RentDateEnd = DateOnly.FromDateTime(item.RentDateEnd)
+                });
             }
 
             return ListRecords;
@@ -23,8 +29,8 @@ namespace BD_CourseProject_Library.Models
     {
         public int Id { get; set; }
         public int BookId { get; set; }
-        public string RentDateStart { get; set; } = null!;
-        public string RentDateEnd { get; set; } = null!;
+        public DateOnly RentDateStart { get; set; }
+        public DateOnly RentDateEnd { get; set; } 
 
         public int ClientId { get; set; }
     }

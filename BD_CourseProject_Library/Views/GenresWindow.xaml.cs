@@ -126,5 +126,68 @@ namespace BD_CourseProject_Library.Views
             new Menu().Show();
             this.Hide();
         }
+
+        private void DescOrAsc_Click(object sender, RoutedEventArgs e)
+        {
+            if (RadioId != null && RadioName != null)
+            {
+                if ((bool)DescOrAsc.IsChecked)
+                {
+                    if ((bool)RadioId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Genres.OrderBy(x => x.Id).ToList();
+                    }
+                    else if ((bool)RadioName.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Genres.OrderBy(x => x.Name).ToList();
+
+                    }
+                }
+                else if (!(bool)DescOrAsc.IsChecked)
+                {
+                    if ((bool)RadioId.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Genres.OrderByDescending(x => x.Id).ToList();
+                    }
+                    else if ((bool)RadioName.IsChecked)
+                    {
+                        MainList.ItemsSource = null;
+                        MainList.ItemsSource = _context.Genres.OrderByDescending(x => x.Name).ToList();
+                    }
+
+                }
+            }
+        }
+
+        private void OrderId_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Genres.OrderBy(x => x.Id).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Genres.OrderByDescending(x => x.Id).ToList();
+            }
+        }
+
+        private void OrderName_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Genres.OrderBy(x => x.Name).ToList();
+            }
+            else if (!(bool)DescOrAsc.IsChecked)
+            {
+                MainList.ItemsSource = null;
+                MainList.ItemsSource = _context.Genres.OrderByDescending(x => x.Name).ToList();
+            }
+        }
     }
 }

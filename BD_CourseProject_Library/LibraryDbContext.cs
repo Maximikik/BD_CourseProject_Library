@@ -94,7 +94,7 @@ namespace BD_CourseProject_Library
                 new Client { Id = 1, Name = "Maxim", Surname = "Rudolovskiy", PhoneNumber = "+375296261410" },
                 new Client { Id = 2, Name = "Oleg", Surname = "Ivanov", PhoneNumber = "+375296261411" },
                 new Client { Id = 3, Name = "Daniil", Surname = "Mihadiuk", PhoneNumber = "+375296958473" },
-                new Client { Id = 4, Name = "Dmitry", Surname = "Rudolovskiy", PhoneNumber = "+375255019461" },
+                new Client { Id = 4, Name = "Dmitry", Surname = "Kudlasevich", PhoneNumber = "+375255019461" },
                 new Client { Id = 5, Name = "Denis", Surname = "Gavrilov", PhoneNumber = "+375335671023" },
                 new Client { Id = 6, Name = "Kirill", Surname = "Lashukevich", PhoneNumber = "+375445671753" },
                 new Client { Id = 7, Name = "Alexandr", Surname = "Drozdov", PhoneNumber = "+375294756471" },

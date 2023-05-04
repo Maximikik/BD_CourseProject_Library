@@ -225,27 +225,27 @@ namespace BD_CourseProject_Library.Views
                 }
                 else if (!(bool)DescOrAsc.IsChecked)
                 {
-                    if (!(bool)RadioId.IsChecked)
+                    if ((bool)RadioId.IsChecked)
                     {
                         MainList.ItemsSource = null;
                         MainList.ItemsSource = _context.Books.OrderByDescending(x => x.Id).ToList();
                     }
-                    else if (!(bool)RadioName.IsChecked)
+                    else if ((bool)RadioName.IsChecked)
                     {
                         MainList.ItemsSource = null;
                         MainList.ItemsSource = _context.Books.OrderByDescending(x => x.Name).ToList();
                     }
-                    else if (!(bool)RadioAuthorId.IsChecked)
+                    else if ((bool)RadioAuthorId.IsChecked)
                     {
                         MainList.ItemsSource = null;
                         MainList.ItemsSource = _context.Books.OrderByDescending(x => x.AuthorId).ToList();
                     }
-                    else if (!(bool)RadioGenreId.IsChecked)
+                    else if ((bool)RadioGenreId.IsChecked)
                     {
                         MainList.ItemsSource = null;
                         MainList.ItemsSource = _context.Books.OrderByDescending(x => x.GenreId).ToList();
                     }
-                    else if (!(bool)RadioQuantity.IsChecked)
+                    else if ((bool)RadioQuantity.IsChecked)
                     {
                         MainList.ItemsSource = null;
                         MainList.ItemsSource = _context.Books.OrderByDescending(x => x.Quantity).ToList();
