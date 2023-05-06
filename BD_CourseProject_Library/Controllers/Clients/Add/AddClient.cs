@@ -21,8 +21,8 @@ namespace BD_CourseProject_Library.Controllers.Clients.Add
         {
 
             if (command != null &&
-                command.Name.Length <= 30 && !command.Name.All(char.IsDigit)
-                && command.Surname.Length <= 30 && !command.Surname.All(char.IsDigit)
+                command.Name.Length <= 30 && !command.Name.Any(char.IsDigit)
+                && command.Surname.Length <= 30 && !command.Surname.Any(char.IsDigit)
                 && IsPhone(command.PhoneNumber))
             {
                 return true;

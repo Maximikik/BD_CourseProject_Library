@@ -20,20 +20,58 @@ namespace BD_CourseProject_Library.Views
 
             _context = new LibraryDbContext();
 
+            ConfigureWindow();
+        }
+
+        private void ConfigureWindow()
+        {
             MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+            //ListRents.ItemsSource = ReportRentDisplayConfigurator.GetReports(_context);
+
+            ComboBoxBookIdEdit.ItemsSource = _context.Books.Select(x => x.Id).ToList();
+            ComboBoxClientId.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
+            ComboBoxClientIdEdit.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
+            ComboBoxRecordIdDelete.ItemsSource = _context.Records.Select(x => x.Id).ToList();
+            ComboBoxRecordIdEdit.ItemsSource = _context.Records.Select(x => x.Id).ToList();
+            ComboBoxBookName.ItemsSource = _context.Books.Select(x => x.Name).ToList();
+
+            DatePickerEnd.DisplayDateStart = DateTime.Parse("01-Jan-2015");
+            DatePickerEnd.DisplayDateEnd = DateTime.Parse("01-Jan-2030");
+
+            DatePickerStart.DisplayDateStart = DateTime.Parse("01-Jan-2015");
+            DatePickerStart.DisplayDateEnd = DateTime.Parse("01-Jan-2030");
+
+            DatePickerEndsEdit.DisplayDateStart = DateTime.Parse("01-Jan-2015");
+            DatePickerEndsEdit.DisplayDateEnd = DateTime.Parse("01-Jan-2030");
+
+            DatePickerStartEdit.DisplayDateStart = DateTime.Parse("01-Jan-2015");
+            DatePickerStartEdit.DisplayDateEnd = DateTime.Parse("01-Jan-2030");
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var query = new AddRecordCommand()
-            {
-                BookName = textBoxName.Text,
-                RentDateStart = textBoxRentStart.Text,
-                RentDateEnd = textBoxRentEnd.Text,
-                ClientId = textBoxClientId.Text
-            };
+            int tempId = -1;
+            DateTime tempDate = DateTime.MinValue;
 
-            if (!AddRecord.Add(_context, query))
+            if (!Int32.TryParse(ComboBoxClientId.Text, out tempId) || DatePickerStart.Text == string.Empty || DatePickerEnd.Text == string.Empty
+                || !DateTime.TryParse(DatePickerEnd.Text, out tempDate) || !DateTime.TryParse(DatePickerStart.Text, out tempDate))
+            {
+                MessageBox.Show("Error!");
+                return;
+            }
+
+
+
+            var command = new AddRecordCommand()
+            {
+                BookName = ComboBoxBookName.Text,
+                RentDateStart = DateTime.Parse(DatePickerStart.Text),
+                RentDateEnd = DateTime.Parse(DatePickerEnd.Text),
+                ClientId = ComboBoxClientId.Text
+            };
+            
+
+            if (!AddRecord.Add(_context, command))
             {
                 MessageBox.Show("Error!");
             }
@@ -41,20 +79,46 @@ namespace BD_CourseProject_Library.Views
             {
                 MainList.ItemsSource = null;
                 MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+
+                ComboBoxRecordIdDelete.ItemsSource = null;
+                ComboBoxRecordIdEdit.ItemsSource = null;
+
+                ComboBoxRecordIdDelete.ItemsSource = _context.Records.Select(x => x.Id).ToList();
+                ComboBoxRecordIdEdit.ItemsSource = _context.Records.Select(x => x.Id).ToList();
+
+                DatePickerStart.Text = string.Empty;
+                DatePickerEnd.Text = string.Empty;
+
+                ComboBoxBookName.Text = string.Empty;
+                ComboBoxClientId.Text = string.Empty;
             }
-            ClearAddTextBoxes();
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
+            int tempId = -1;
+
+
+            if (ComboBoxClientIdEdit.Text != string.Empty &&!Int32.TryParse(ComboBoxClientIdEdit.Text, out tempId))
+            {
+                MessageBox.Show("Error!");
+                return;
+            }
             var command = new EditRecordCommand()
             {
-                Id = textBoxIdEdit.Text,
-                BookId = textBoxBookIdEdit.Text,
-                ClientId = textBoxClientIdEdit.Text,
-                RentDateStart = textBoxRentDateStartEdit.Text,
-                RentDateEnd = textBoxRentDateEndEdit.Text
+                Id = ComboBoxRecordIdEdit.Text,
+                BookId = ComboBoxBookIdEdit.Text,
+                ClientId = ComboBoxClientIdEdit.Text,
             };
+
+            DateTime tempDateStart;
+            DateTime tempDateEnd;
+
+            if (!DateTime.TryParse(DatePickerStartEdit.Text, out tempDateEnd)) command.RentDateStart = default;
+            else command.RentDateStart = DateTime.Parse(DatePickerStartEdit.Text);
+            if (!DateTime.TryParse(DatePickerEndsEdit.Text, out tempDateEnd)) command.RentDateEnd = default;
+            else command.RentDateEnd = DateTime.Parse(DatePickerEndsEdit.Text);
+
 
             if (!EditRecord.Edit(_context, command))
             {
@@ -64,15 +128,20 @@ namespace BD_CourseProject_Library.Views
             {
                 MainList.ItemsSource = null;
                 MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+
+                ComboBoxBookIdEdit.Text = string.Empty;
+                ComboBoxBookName.Text = string.Empty;
+                ComboBoxClientIdEdit.Text = string.Empty;
+                DatePickerStartEdit.Text = string.Empty;
+                DatePickerEndsEdit.Text = string.Empty;
             }
-            ClearEditTextBoxes();
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             var idInt = -1;
 
-            if (Int32.TryParse(textBoxIdDelete.Text, out idInt))
+            if (Int32.TryParse(ComboBoxRecordIdDelete.Text, out idInt))
             {
                 var command = new DeleteRecordCommand { Id = idInt };
 
@@ -84,34 +153,18 @@ namespace BD_CourseProject_Library.Views
                 {
                     MainList.ItemsSource = null;
                     MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+
+
+                    ComboBoxRecordIdDelete.ItemsSource = null;
+                    ComboBoxRecordIdEdit.ItemsSource = null;
+
+                    ComboBoxRecordIdDelete.ItemsSource = _context.Records.Select(x => x.Id).ToList();
+                    ComboBoxRecordIdEdit.ItemsSource = _context.Records.Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
-
-            ClearDeleteTextBox();
         }
 
-        private void ClearAddTextBoxes()
-        {
-            textBoxName.Clear();
-            textBoxClientId.Clear();
-            textBoxRentStart.Clear();
-            textBoxRentEnd.Clear();
-        }
-
-        private void ClearEditTextBoxes()
-        {
-            textBoxIdEdit.Clear();
-            textBoxBookIdEdit.Clear();
-            textBoxClientIdEdit.Clear();
-            textBoxRentDateEndEdit.Clear();
-            textBoxRentDateStartEdit.Clear();
-        }
-
-        private void ClearDeleteTextBox()
-        {
-            textBoxIdDelete.Clear();
-        }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {

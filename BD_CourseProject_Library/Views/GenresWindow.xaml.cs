@@ -1,23 +1,10 @@
-﻿using BD_CourseProject_Library.Controllers.Authors.Add;
-using BD_CourseProject_Library.Controllers.Authors.Delete;
-using BD_CourseProject_Library.Controllers.Authors.Edit;
+﻿using BD_CourseProject_Library.Controllers.Authors.Delete;
 using BD_CourseProject_Library.Controllers.Genres.Add;
 using BD_CourseProject_Library.Controllers.Genres.Edit;
 using BD_CourseProject_Library.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 
 namespace BD_CourseProject_Library.Views
@@ -35,12 +22,20 @@ namespace BD_CourseProject_Library.Views
 
             _context = new LibraryDbContext();
 
+            ConfigureWindow();
+        }
+
+        private void ConfigureWindow()
+        {
             MainList.ItemsSource = _context.Genres.ToList();
+
+            ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
+            ComboBoxGenreIdDelete.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (textBoxName.Text.Length > 3)
+            if (textBoxName.Text != string.Empty)
             {
                 var command = new AddGenreCommand { Name = textBoxName.Text };
 
@@ -51,7 +46,13 @@ namespace BD_CourseProject_Library.Views
                 else
                 {
                     MainList.ItemsSource = null;
-                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                    MainList.ItemsSource = _context.Genres.ToList();
+
+                    ComboBoxGenreIdEdit.ItemsSource = null;
+                    ComboBoxGenreIdDelete.ItemsSource = null; 
+
+                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
+                    ComboBoxGenreIdDelete.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -63,7 +64,7 @@ namespace BD_CourseProject_Library.Views
         {
             var idInt = -1;
 
-            if (Int32.TryParse(textBoxIdDelete.Text, out idInt))
+            if (Int32.TryParse(ComboBoxGenreIdEdit.Text, out idInt))
             {
                 var command = new EditGenreCommand { Id = idInt, Genre = textBoxNameEdit.Text };
 
@@ -74,7 +75,10 @@ namespace BD_CourseProject_Library.Views
                 else
                 {
                     MainList.ItemsSource = null;
-                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                    MainList.ItemsSource = _context.Genres.ToList();
+
+                    ComboBoxGenreIdEdit.ItemsSource = null;
+                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -86,7 +90,7 @@ namespace BD_CourseProject_Library.Views
         {
             var idInt = -1;
 
-            if (Int32.TryParse(textBoxIdDelete.Text, out idInt))
+            if (Int32.TryParse(ComboBoxGenreIdDelete.Text, out idInt))
             {
                 var command = new DeleteAuthorCommand { Id = idInt };
 
@@ -97,12 +101,16 @@ namespace BD_CourseProject_Library.Views
                 else
                 {
                     MainList.ItemsSource = null;
-                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                    MainList.ItemsSource = _context.Genres.ToList();
+
+                    ComboBoxGenreIdEdit.ItemsSource = null;
+                    ComboBoxGenreIdDelete.ItemsSource = null;
+
+                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
+                    ComboBoxGenreIdDelete.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
-
-            ClearDeleteTextBox();
         }
 
         private void ClearAddTextBoxes()
@@ -112,14 +120,9 @@ namespace BD_CourseProject_Library.Views
 
         private void ClearEditTextBoxes()
         {
-            textBoxIdEdit.Clear();
             textBoxNameEdit.Clear();
         }
 
-        private void ClearDeleteTextBox()
-        {
-            textBoxIdDelete.Clear();
-        }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {

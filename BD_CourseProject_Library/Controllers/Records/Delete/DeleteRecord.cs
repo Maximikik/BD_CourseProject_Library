@@ -12,9 +12,9 @@ namespace BD_CourseProject_Library.Controllers.Records.Delete
     {
         public static bool Delete(LibraryDbContext _context, DeleteRecordCommand command)
         {
-            var element = _context.Records.FirstOrDefault( entity => entity.Id == command.Id );
+            var element = _context.Records.FirstOrDefault(entity => entity.Id == Convert.ToInt32(command.Id));
 
-            if ( element != null )
+            if (element != null)
             {
                 _context.Records.Remove(element);
                 _context.SaveChanges();

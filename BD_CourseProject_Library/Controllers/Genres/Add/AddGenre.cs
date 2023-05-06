@@ -20,7 +20,7 @@ namespace BD_CourseProject_Library.Controllers.Genres.Add
         private static bool Validator(AddGenreCommand command)
         {
             if (command != null && command.Name.Length <= 30
-                && !command.Name.All(char.IsDigit))
+                && !command.Name.Any(char.IsDigit))
             {
                 return true;
             }

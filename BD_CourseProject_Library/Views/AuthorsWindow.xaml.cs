@@ -1,7 +1,6 @@
 ﻿using BD_CourseProject_Library.Controllers.Authors.Add;
 using BD_CourseProject_Library.Controllers.Authors.Delete;
 using BD_CourseProject_Library.Controllers.Authors.Edit;
-using BD_CourseProject_Library.Models;
 using System;
 using System.Linq;
 using System.Windows;
@@ -20,14 +19,21 @@ namespace BD_CourseProject_Library.Views
 
             _context = new LibraryDbContext();
 
+            ConfigureWindow();
+        }
+
+        private void ConfigureWindow()
+        {
             MainList.ItemsSource = _context.Authors.ToList();
+            ComboBoxAuthorId.ItemsSource = _context.Authors.Select(x => x.Id).ToList();
+            ComboBoxAuthorIdDelete.ItemsSource = _context.Authors.Select(x => x.Id).ToList();
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             var idInt = -1;
 
-            if (Int32.TryParse(textBoxIdDelete.Text, out idInt))
+            if (Int32.TryParse(ComboBoxAuthorIdDelete.Text, out idInt))
             {
                 var command = new DeleteAuthorCommand { Id = idInt };
 
@@ -38,19 +44,20 @@ namespace BD_CourseProject_Library.Views
                 else
                 {
                     MainList.ItemsSource = null;
-                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                    MainList.ItemsSource = _context.Authors.ToList();
+
+                    ComboBoxAuthorId.ItemsSource = null;
+                    ComboBoxAuthorId.ItemsSource = _context.Authors.Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
-
-            ClearDeleteTextBox();
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             var idInt = -1;
 
-            if (Int32.TryParse(textBoxIdDelete.Text, out idInt))
+            if (Int32.TryParse(ComboBoxAuthorId.Text, out idInt))
             {
                 var command = new EditAuthorCommand { Id = idInt, Author = textBoxNameEdit.Text };
 
@@ -61,7 +68,7 @@ namespace BD_CourseProject_Library.Views
                 else
                 {
                     MainList.ItemsSource = null;
-                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                    MainList.ItemsSource = _context.Authors.ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -71,7 +78,7 @@ namespace BD_CourseProject_Library.Views
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (textBoxName.Text.Length > 3)
+            if (textBoxName.Text != string.Empty)
             {
                 var command = new AddAuthorCommand { authorName = textBoxName.Text };
 
@@ -82,7 +89,10 @@ namespace BD_CourseProject_Library.Views
                 else
                 {
                     MainList.ItemsSource = null;
-                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                    MainList.ItemsSource = _context.Authors.ToList();
+
+                    ComboBoxAuthorId.ItemsSource = null;
+                    ComboBoxAuthorId.ItemsSource = _context.Authors.Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -97,13 +107,7 @@ namespace BD_CourseProject_Library.Views
 
         private void ClearEditTextBoxes()
         {
-            textBoxIdEdit.Clear();
             textBoxNameEdit.Clear();
-        }
-
-        private void ClearDeleteTextBox()
-        {
-            textBoxIdDelete.Clear();
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)

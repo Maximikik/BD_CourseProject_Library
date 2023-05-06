@@ -5,7 +5,6 @@ namespace BD_CourseProject_Library.Controllers.Clients.Edit
 {
     public static class EditClient
     {
-        private static int _id { get; set; }
         private static string _name { get; set; } = null!;
         private static string _surname { get; set; } = null!;
         private static string _phoneNumber { get; set; } = null!;
@@ -32,12 +31,9 @@ namespace BD_CourseProject_Library.Controllers.Clients.Edit
         {
             if (command != null)
             {
-                if (command.Id >= 0) _id = command.Id;
-                else return false;
-                if (command.Name.Length <= 30 && !command.Name.All(char.IsDigit) && command.Name != string.Empty) _name = command.Name;
-                if (command.Surname.Length <= 30 && !command.Surname.All(char.IsDigit) && command.Surname != string.Empty) _surname = command.Surname;
-                if ( IsPhone(command.PhoneNumber) ) command.PhoneNumber = _phoneNumber;
-                return true;
+                if ( command.Name.Length >= 30 || command.Name.Any(char.IsDigit)) return false;
+                if ( command.Surname.Length >= 30 || command.Surname.Any(char.IsDigit)) return false;
+                if ( command.PhoneNumber != string.Empty && !IsPhone(command.PhoneNumber) ) return false;
             }
 
 

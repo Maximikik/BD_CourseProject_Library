@@ -17,7 +17,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
-                <RowDefinition Height="2*" />
+                <RowDefinition Height="1.77*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Border Margin="7" BorderBrush="Black" BorderThickness="2" CornerRadius="3" Grid.Row="1" Grid.Column="3">
@@ -41,7 +41,6 @@
                 Content="Add record"
                 Foreground="White"
                 FontSize="20"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonAdd_Click" />
             <Button Grid.Column="1" Grid.Row="0" Name="ButtonEdit"
@@ -52,7 +51,6 @@
                 Content="Edit record"
                 Foreground="White"
                 FontSize="20"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonEdit_Click" />
             <Button Grid.Column="2" Grid.Row="0" Name="ButtonDelete"
@@ -63,57 +61,24 @@
                 Content="Delete record"
                 Foreground="White"
                 FontSize="20"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonDelete_Click" />
             <Border  Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="4"
                      Height="auto">
                 <StackPanel Height="auto">
                     <Label FontSize="20">Fill the data below to add</Label>
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Book name"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxName"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Rent date start"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxRentStart"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Rent date end"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxRentEnd"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Client id"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxClientId"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
+                    <ComboBox Name="ComboBoxBookName" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Book name" Background="#8969CE">
+                    </ComboBox>
+                    <DatePicker materialDesign:HintAssist.Hint="Rent date starts"
+                     Name="DatePickerStart" Background="#8969CE"  Margin="5"  
+                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                    <DatePicker materialDesign:HintAssist.Hint="Rent date ends"
+                    Name="DatePickerEnd" Background="#8969CE"  Margin="5"  
+                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                    <ComboBox Name="ComboBoxClientId" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Client Id" Background="#8969CE">
+                    </ComboBox>
                 </StackPanel>
             </Border>
 
@@ -121,61 +86,23 @@
                      Height="auto">
                 <StackPanel Height="auto">
                     <Label FontSize="20">Fill the data below to edit</Label>
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Record Id"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxIdEdit"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Book id"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxBookIdEdit"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Rent date start"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxRentDateStartEdit"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Rent date end"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxRentDateEndEdit"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Client Id"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxClientIdEdit"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
+                    <ComboBox Name="ComboBoxRecordIdEdit" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Record Id" Background="#8969CE">
+                    </ComboBox>
+                    <ComboBox Name="ComboBoxBookIdEdit" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Book Id" Background="#8969CE">
+                    </ComboBox>
+                    <DatePicker materialDesign:HintAssist.Hint="Rent date starts"
+                        Name="DatePickerStartEdit" Margin="5 4 5 0"  
+                                Background="#8969CE"
+                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                    <DatePicker materialDesign:HintAssist.Hint="Rent date ends"
+                                Name="DatePickerEndsEdit" Margin="5 5 5 0"  
+                                Background="#8969CE"
+                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                    <ComboBox Name="ComboBoxClientIdEdit" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Client Id" Background="#8969CE">
+                    </ComboBox>
                 </StackPanel>
             </Border>
 
@@ -183,17 +110,9 @@
                      Height="auto">
                 <StackPanel Height="auto">
                     <Label FontSize="20">Fill the id below to delete</Label>
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Record id"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxIdDelete"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
+                    <ComboBox Name="ComboBoxRecordIdDelete" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Record Id" Background="#8969CE">
+                    </ComboBox>
                 </StackPanel>
             </Border>
             <Button Grid.Column="0" Grid.Row="2" Name="ButtonBack"
@@ -204,7 +123,6 @@
                 Content="Back"
                 Foreground="White"
                 FontSize="20"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonBack_Click" />
 
@@ -257,6 +175,24 @@
                         IsChecked="False" 
                         Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="RadioClientId_Checked"/>
             </StackPanel>
+            <Border Grid.Row="2" Grid.Column="3" BorderThickness="1" Margin="7" 
+                    BorderBrush="Black" CornerRadius="2">
+                <Expander FontSize="12"  Background="#8969CE"
+                                HorizontalAlignment="Stretch"
+                                Header="Rents report"  Margin="2">
+                    <ListView Width="600" Foreground="White" FontSize="15" Name="ListRents"  HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Header="Client Name" DisplayMemberBinding="{Binding ClientName}"/>
+                                <GridViewColumn Header="Client Surname" DisplayMemberBinding="{Binding ClientSurname}"/>
+                                <GridViewColumn Header="Book" DisplayMemberBinding="{Binding BookName}"/>
+                                <GridViewColumn Header="Date offer" DisplayMemberBinding="{Binding DateOffered}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Expander>
+            </Border>
 
         </Grid>
     </Grid>

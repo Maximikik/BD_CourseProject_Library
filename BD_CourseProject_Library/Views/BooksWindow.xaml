@@ -43,7 +43,6 @@
                 Content="Add record"
                 Foreground="White"
                 FontSize="20"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonAdd_Click" />
             <Button Grid.Column="1" Grid.Row="0" Name="ButtonEdit"
@@ -54,7 +53,6 @@
                 Content="Edit record"
                 Foreground="White"
                 FontSize="20"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonEdit_Click" />
             <Button Grid.Column="2" Grid.Row="0" Name="ButtonDelete"
@@ -65,7 +63,6 @@
                 Content="Delete record"
                 Foreground="White"
                 FontSize="20"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonDelete_Click" />
             <Border  Grid.Row="1"  Grid.Column="0" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="7"
@@ -80,31 +77,15 @@
                         VerticalAlignment="Top"
                         AcceptsReturn="True"
                         Name="textBoxName"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
+                        
                         Style="{StaticResource MaterialDesignFilledTextBox}"
                         TextWrapping="Wrap" />
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Author name"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxAuthor"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Genre name"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxGenre"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
+                    <ComboBox Name="ComboBoxAuthorId" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Author" Background="#8969CE">
+                    </ComboBox>
+                    <ComboBox Name="ComboBoxGenreId" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Genre" Background="#8969CE">
+                    </ComboBox>
                     <TextBox
                         Margin="5"
                         materialDesign:HintAssist.Hint="Quantity"
@@ -113,7 +94,6 @@
                         VerticalAlignment="Top"
                         AcceptsReturn="True"
                         Name="textBoxQuantity"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
                         Style="{StaticResource MaterialDesignFilledTextBox}"
                         TextWrapping="Wrap" />
                 </StackPanel>
@@ -123,17 +103,9 @@
                      Height="auto">
                 <StackPanel Height="auto">
                     <Label FontSize="20">Fill the data below to edit</Label>
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Book id"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxIdEdit"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
+                    <ComboBox Name="ComboBoxIdEdit" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Book Id" Background="#8969CE">
+                    </ComboBox>
                     <TextBox
                         Margin="5"
                         materialDesign:HintAssist.Hint="Book name"
@@ -142,31 +114,14 @@
                         VerticalAlignment="Top"
                         AcceptsReturn="True"
                         Name="textBoxNameEdit"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
                         Style="{StaticResource MaterialDesignFilledTextBox}"
                         TextWrapping="Wrap" />
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Author Id"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxAuthorEdit"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Genre Id"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxGenreEdit"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
+                    <ComboBox Name="ComboBoxAuthorIdEdit" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Author" Background="#8969CE">
+                    </ComboBox>
+                    <ComboBox Name="ComboBoxGenreIdEdit" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Genre" Background="#8969CE">
+                    </ComboBox>
                     <TextBox
                         Margin="5"
                         materialDesign:HintAssist.Hint="Quantity"
@@ -175,7 +130,6 @@
                         VerticalAlignment="Top"
                         AcceptsReturn="True"
                         Name="textBoxQuantityEdit"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
                         Style="{StaticResource MaterialDesignFilledTextBox}"
                         TextWrapping="Wrap" />
                 </StackPanel>
@@ -185,17 +139,9 @@
                      Height="auto">
                 <StackPanel Height="auto">
                     <Label FontSize="20">Fill the id below to delete</Label>
-                    <TextBox
-                        Margin="5"
-                        materialDesign:HintAssist.Hint="Book id"
-                        materialDesign:HintAssist.Foreground="LightGray"
-                        MaxWidth="400"
-                        VerticalAlignment="Top"
-                        AcceptsReturn="True"
-                        Name="textBoxIdDelete"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        TextWrapping="Wrap" />
+                    <ComboBox Name="ComboBoxIdDelete" Margin="5" Padding="16 10 10 10"
+                          materialDesign:HintAssist.Hint="Book Id" Background="#8969CE">
+                    </ComboBox>
                 </StackPanel>
             </Border>
 

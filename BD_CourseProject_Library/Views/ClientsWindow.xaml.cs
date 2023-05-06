@@ -23,8 +23,17 @@ namespace BD_CourseProject_Library.Views
 
             _context = new LibraryDbContext();
 
-            MainList.ItemsSource = _context.Clients.ToList();
+            ConfigureWindow();
         }
+
+        private void ConfigureWindow()
+        {
+            MainList.ItemsSource = _context.Clients.ToList();
+
+            ComboBoxClientIdDelete.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
+            ComboBoxClientIdEdit.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
+        }
+
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
@@ -34,7 +43,7 @@ namespace BD_CourseProject_Library.Views
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (textBoxName.Text.Length > 3 && textBoxSurname.Text.Length > 3)
+            if (textBoxName.Text != string.Empty && textBoxSurname.Text != string.Empty && textBoxPhoneNumber.Text != string.Empty)
             {
                 var command = new AddClientCommand { Name = textBoxName.Text, Surname = textBoxSurname.Text, PhoneNumber = textBoxPhoneNumber.Text };
 
@@ -45,7 +54,13 @@ namespace BD_CourseProject_Library.Views
                 else
                 {
                     MainList.ItemsSource = null;
-                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                    MainList.ItemsSource = _context.Clients.ToList();
+
+                    ComboBoxClientIdDelete.ItemsSource = null;
+                    ComboBoxClientIdEdit.ItemsSource = null;
+
+                    ComboBoxClientIdDelete.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
+                    ComboBoxClientIdEdit.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -57,7 +72,7 @@ namespace BD_CourseProject_Library.Views
         {
             var idInt = -1;
 
-            if (Int32.TryParse(textBoxIdEdit.Text, out idInt))
+            if (Int32.TryParse(ComboBoxClientIdEdit.Text, out idInt))
             {
                 var command = new EditClientCommand { Id = idInt,  Name = textBoxNameEdit.Text, Surname = textBoxSurnameEdit.Text, PhoneNumber = textBoxPhoneEdit.Text };
 
@@ -68,7 +83,7 @@ namespace BD_CourseProject_Library.Views
                 else
                 {
                     MainList.ItemsSource = null;
-                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                    MainList.ItemsSource = _context.Clients.ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -80,7 +95,7 @@ namespace BD_CourseProject_Library.Views
         {
             var idInt = -1;
 
-            if (Int32.TryParse(textBoxIdDelete.Text, out idInt))
+            if (Int32.TryParse(ComboBoxClientIdDelete.Text, out idInt))
             {
                 var command = new DeleteClientCommand { Id = idInt };
 
@@ -91,12 +106,16 @@ namespace BD_CourseProject_Library.Views
                 else
                 {
                     MainList.ItemsSource = null;
-                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                    MainList.ItemsSource = _context.Clients.ToList();
+
+                    ComboBoxClientIdDelete.ItemsSource = null;
+                    ComboBoxClientIdEdit.ItemsSource = null;
+
+                    ComboBoxClientIdDelete.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
+                    ComboBoxClientIdEdit.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
-
-            ClearDeleteTextBox();
         }
 
         private void ClearAddTextBoxes()
@@ -108,16 +127,11 @@ namespace BD_CourseProject_Library.Views
 
         private void ClearEditTextBoxes()
         {
-            textBoxIdEdit.Clear();
             textBoxNameEdit.Clear();
             textBoxSurnameEdit.Clear();
             textBoxPhoneEdit.Clear();
         }
 
-        private void ClearDeleteTextBox()
-        {
-            textBoxIdDelete.Clear();
-        }
 
         private void DescOrAsc_Click(object sender, RoutedEventArgs e)
         {

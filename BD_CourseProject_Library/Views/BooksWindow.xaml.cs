@@ -19,28 +19,56 @@ namespace BD_CourseProject_Library.Views
             InitializeComponent();
         
             _context = new LibraryDbContext();
-            //var books = _context.Books.OrderBy(x => x.Name).ToList();
+
+            ConfigureWindow();
+        }
+
+        private void ConfigureWindow()
+        {
             MainList.ItemsSource = _context.Books.ToList();
+
+            ComboBoxAuthorId.ItemsSource = _context.Authors.Select(x => x.Name).ToList();
+            ComboBoxGenreId.ItemsSource = _context.Genres.Select(x => x.Name).ToList();
+            ComboBoxAuthorIdEdit.ItemsSource = _context.Authors.Select(x => x.Name).ToList();
+            ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Name).ToList();
+            ComboBoxIdDelete.ItemsSource = _context.Books.Select(x => x.Id).ToList();
+            ComboBoxIdEdit.ItemsSource = _context.Books.Select(x => x.Id).ToList();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var query = new AddBookCommand()
+            AddBookCommand command;
+            try
             {
-                Name = textBoxName.Text,
-                Author = textBoxAuthor.Text,
-                Genre = textBoxGenre.Text,
-                Quantity = Convert.ToInt32(textBoxQuantity.Text)
-            };
+                command = new AddBookCommand()
+                {
+                    Name = textBoxName.Text,
+                    Author = ComboBoxAuthorId.Text,
+                    Genre = ComboBoxGenreId.Text,
+                    Quantity = Convert.ToInt32(textBoxQuantity.Text)
+                };
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error!");
+                return;
+            }
+            
 
-            if (!AddBook.Add(_context, query))
+            if (!AddBook.Add(_context, command))
             {
                 MessageBox.Show("Error!");
             }
             else
             {
                 MainList.ItemsSource = null;
-                MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                MainList.ItemsSource = _context.Books.ToList();
+
+                ComboBoxIdDelete.ItemsSource = null;
+                ComboBoxIdEdit.ItemsSource = null;
+
+                ComboBoxIdDelete.ItemsSource = _context.Books.Select(x => x.Id).ToList();
+                ComboBoxIdEdit.ItemsSource = _context.Books.Select(x => x.Id).ToList();
             }
             ClearAddTextBoxes();
         }
@@ -49,7 +77,7 @@ namespace BD_CourseProject_Library.Views
         {
             var idInt = -1;
 
-            if (Int32.TryParse(textBoxIdDelete.Text, out idInt))
+            if (Int32.TryParse(ComboBoxIdDelete.Text, out idInt))
             {
                 var command = new DeleteBookCommand { Id = idInt };
 
@@ -60,23 +88,26 @@ namespace BD_CourseProject_Library.Views
                 else
                 {
                     MainList.ItemsSource = null;
-                    MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
+                    MainList.ItemsSource = _context.Books.ToList();
+
+                    ComboBoxIdDelete.ItemsSource = null;
+                    ComboBoxIdEdit.ItemsSource = null;
+
+                    ComboBoxIdDelete.ItemsSource = _context.Books.Select(x => x.Id).ToList();
+                    ComboBoxIdEdit.ItemsSource = _context.Books.Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
-
-            ClearDeleteTextBox();
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-
             var command = new EditBookCommand()
             {
-                Id = textBoxIdEdit.Text,
+                Id = ComboBoxIdEdit.Text,
                 Name = textBoxNameEdit.Text,
-                AuthorId = textBoxAuthorEdit.Text,
-                GenreId = textBoxGenreEdit.Text,
+                AuthorId = ComboBoxAuthorIdEdit.Text,
+                GenreId = ComboBoxGenreIdEdit.Text,
                 Quantity = textBoxQuantityEdit.Text
             };
 
@@ -95,25 +126,16 @@ namespace BD_CourseProject_Library.Views
 
         private void ClearAddTextBoxes()
         {
-            textBoxAuthor.Clear();
             textBoxName.Clear();
-            textBoxGenre.Clear();
             textBoxQuantity.Clear();
         }
 
         private void ClearEditTextBoxes()
         {
-            textBoxIdEdit.Clear();
             textBoxNameEdit.Clear();
-            textBoxAuthorEdit.Clear();
-            textBoxGenreEdit.Clear();
             textBoxQuantityEdit.Clear();
         }
 
-        private void ClearDeleteTextBox()
-        {
-            textBoxIdDelete.Clear();
-        }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
