@@ -12,8 +12,8 @@ namespace BD_CourseProject_Library
         public DbSet<Client> Clients { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Record> Records { get; set; }
-        //public DbSet<ReportAction> ReportActions { get; set; }
-        //public DbSet<ReportRent> ReportRents { get; set; }
+        public DbSet<ReportAction> ReportActions { get; set; }
+        public DbSet<ReportRent> ReportRents { get; set; }
 
         public LibraryDbContext() { }
 
@@ -21,6 +21,7 @@ namespace BD_CourseProject_Library
             DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=Library;Trusted_Connection=true;Encrypt=false;TrustServerCertificate=false");
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -30,8 +31,8 @@ namespace BD_CourseProject_Library
             modelBuilder.ApplyConfiguration(new ClientConfig());
             modelBuilder.ApplyConfiguration(new GenreConfig());
             modelBuilder.ApplyConfiguration(new RecordConfig());
-            //modelBuilder.ApplyConfiguration(new ReportActionConfig());
-            //modelBuilder.ApplyConfiguration(new ReportRentConfig());
+            modelBuilder.ApplyConfiguration(new ReportActionConfig());
+            modelBuilder.ApplyConfiguration(new ReportRentConfig());
 
 
             modelBuilder.Entity<Author>().HasData(
@@ -114,15 +115,15 @@ namespace BD_CourseProject_Library
                 new Record { Id = 7, BookId = 2, RentDateStart = DateTime.Parse("22-Dec-2022"), RentDateEnd = DateTime.Parse("01-Jul-2023"), ClientId = 1 }
                 );
 
-            //modelBuilder.Entity<ReportRent>().HasData(
-            //    new ReportRent { Id = 1, BookId = 1, DateOffered = DateTime.Parse("17-Dec-2022"), ClientId = 2 },
-            //    new ReportRent { Id = 2, BookId = 3, DateOffered = DateTime.Parse("23-Dec-2022"), ClientId = 4 },
-            //    new ReportRent { Id = 3, BookId = 4, DateOffered = DateTime.Parse("13-Jan-2023"), ClientId = 3 },
-            //    new ReportRent { Id = 4, BookId = 5, DateOffered = DateTime.Parse("19-Jan-2023"), ClientId = 3 },
-            //    new ReportRent { Id = 5, BookId = 6, DateOffered = DateTime.Parse("15-Feb-2023"), ClientId = 6 },
-            //    new ReportRent { Id = 6, BookId = 7, DateOffered = DateTime.Parse("03-Jan-2023"), ClientId = 5 },
-            //    new ReportRent { Id = 7, BookId = 2, DateOffered = DateTime.Parse("22-Dec-2022"), ClientId = 1 }
-            //    );
+            modelBuilder.Entity<ReportRent>().HasData(
+                new ReportRent { Id = 1, BookId = 1, DateOffered = DateTime.Parse("17-Dec-2022"), ClientId = 2 },
+                new ReportRent { Id = 2, BookId = 3, DateOffered = DateTime.Parse("23-Dec-2022"), ClientId = 4 },
+                new ReportRent { Id = 3, BookId = 4, DateOffered = DateTime.Parse("13-Jan-2023"), ClientId = 3 },
+                new ReportRent { Id = 4, BookId = 5, DateOffered = DateTime.Parse("19-Jan-2023"), ClientId = 3 },
+                new ReportRent { Id = 5, BookId = 6, DateOffered = DateTime.Parse("15-Feb-2023"), ClientId = 6 },
+                new ReportRent { Id = 6, BookId = 7, DateOffered = DateTime.Parse("03-Jan-2023"), ClientId = 5 },
+                new ReportRent { Id = 7, BookId = 2, DateOffered = DateTime.Parse("22-Dec-2022"), ClientId = 1 }
+                );
 
 
             base.OnModelCreating(modelBuilder);

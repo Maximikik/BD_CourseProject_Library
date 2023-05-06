@@ -180,7 +180,7 @@
                 <Expander FontSize="12"  Background="#8969CE"
                                 HorizontalAlignment="Stretch"
                                 Header="Rents report"  Margin="2">
-                    <ListView Width="600" Foreground="White" FontSize="15" Name="ListRents"  HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                    <!--<ListView Width="600" Foreground="White" FontSize="15" Name="ListRents"  HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
@@ -190,7 +190,7 @@
                                 <GridViewColumn Header="Date offer" DisplayMemberBinding="{Binding DateOffered}"/>
                             </GridView>
                         </ListView.View>
-                    </ListView>
+                    </ListView>-->
                 </Expander>
             </Border>
 
