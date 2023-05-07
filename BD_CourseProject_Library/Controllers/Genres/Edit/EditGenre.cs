@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using BD_CourseProject_Library.Models;
+using System;
+using System.Linq;
 
 namespace BD_CourseProject_Library.Controllers.Genres.Edit
 {
@@ -12,6 +14,7 @@ namespace BD_CourseProject_Library.Controllers.Genres.Edit
                 if (element != null)
                 {
                     element.Name = command.Genre;
+                    _context.ReportActions.Add(new ReportAction { Table = "Genres", Operation = Operations.Edit.ToString(), DateOffered = DateTime.Now });
 
                     _context.SaveChanges();
 

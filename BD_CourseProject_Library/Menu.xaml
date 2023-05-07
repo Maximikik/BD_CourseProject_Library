@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BD_CourseProject_Library"
         mc:Ignorable="d"
-        Title="Menu" Height="460" Width="1500">
-    <Grid Background="MediumPurple">
+        Title="Menu" Height="460" Width="1400">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="7*" />
-            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2.2*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -18,48 +18,48 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <TextBlock FontSize="30" Grid.Column="1" Grid.Row="0"
-                   HorizontalAlignment="Center" Foreground="White"
-                   VerticalAlignment="Center">Editor mode</TextBlock>
+        <TextBlock FontSize="40" FontWeight="Bold" Grid.Column="1" Grid.Row="0"
+                   HorizontalAlignment="Center" Foreground="Black"
+                   VerticalAlignment="Center">Library</TextBlock>
         <Border Grid.Row="1" Grid.Column="1" CornerRadius="6" BorderBrush="Gray" Background="White" BorderThickness="2" DockPanel.Dock="Top">
             <WrapPanel  Margin="30" HorizontalAlignment="Center" Background="AliceBlue" VerticalAlignment="Center">
                 <Border CornerRadius="6" BorderBrush="Gray" BorderThickness="3" VerticalAlignment="Center">
                     <StackPanel Background="AliceBlue">
                         <WrapPanel>
-                            <Button Margin="5" Width="200" Name="ButtonAuthors" Click="ButtonAuthors_Click">Authors</Button>
+                            <Button Background="LightGray" Foreground="Black" Margin="5" Width="200" Name="ButtonAuthors" Click="ButtonAuthors_Click">Authors</Button>
                             <TextBlock Margin="5" FontSize="15" TextWrapping="Wrap" Width="300">
                             id, Author name
                             </TextBlock>
                         </WrapPanel>
                         <WrapPanel>
-                            <Button Margin="5" Width="200" Name="ButtonBooks" Click="ButtonBooks_Click">Books</Button>
+                            <Button Background="LightGray" Foreground="Black" Margin="5" Width="200" Name="ButtonBooks" Click="ButtonBooks_Click">Books</Button>
                             <TextBlock Margin="5" FontSize="15" TextWrapping="Wrap" Width="300">
                             id, Book name, Author id, Genre id, Quantity
                             </TextBlock>
                         </WrapPanel>
                         <WrapPanel>
-                            <Button Margin="5" Width="200" Name="ButtonGenres" Click="ButtonGenres_Click">Genres</Button>
+                            <Button Background="LightGray" Foreground="Black" Margin="5" Width="200" Name="ButtonGenres" Click="ButtonGenres_Click">Genres</Button>
                             <TextBlock Margin="5" FontSize="15" TextWrapping="Wrap" Width="300">
                             id, Genre name
                             </TextBlock>
                         </WrapPanel>
 
                         <WrapPanel>
-                            <Button Margin="5" Width="200" Name="ButtonClients" Click="ButtonClients_Click">Clients</Button>
+                            <Button Background="LightGray" Foreground="Black" Margin="5" Width="200" Name="ButtonClients" Click="ButtonClients_Click">Clients</Button>
                             <TextBlock Margin="5" FontSize="15" TextWrapping="Wrap" Width="300">
                             id, Client name, surname, phone number
                             </TextBlock>
                         </WrapPanel>
                         <WrapPanel>
-                            <Button Margin="5" Width="200" Name="ButtonRecords" Click="ButtonRecords_Click">Records</Button>
+                            <Button Background="LightGray" Foreground="Black" Margin="5" Width="200" Name="ButtonRecords" Click="ButtonRecords_Click">Records</Button>
                             <TextBlock Margin="5" FontSize="15" TextWrapping="Wrap" Width="300">
                             id, Book id, Rent date start, End, Client id
                             </TextBlock>
                         </WrapPanel>
                     </StackPanel>
                 </Border>
-                <StackPanel>
-                <TextBlock Margin="5" FontSize="20" TextWrapping="Wrap" Width="300">
+                <StackPanel VerticalAlignment="Center">
+                <TextBlock  Margin="5" FontSize="20" TextWrapping="Wrap" Width="300">
                     This is an information system of library.
                     You can use it to work with data of library database.
                     There are buttons with names of tables in db.
@@ -67,6 +67,10 @@
             </StackPanel>
             </WrapPanel>
         </Border>
-
+        <StackPanel Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="30">
+            <Button Background="LightGray" Foreground="Black"  HorizontalAlignment="Center" Margin="5" Width="200" Name="ButtonReport" Click="ButtonRents_Click">Journal rents</Button>
+        
+        </StackPanel>
+        
     </Grid>
 </Window>

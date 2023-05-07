@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD_CourseProject_Library.Models;
+using System;
 using System.Linq;
 
 namespace BD_CourseProject_Library.Controllers.Records.Edit
@@ -29,6 +30,8 @@ namespace BD_CourseProject_Library.Controllers.Records.Edit
                     {
                         element.ClientId = Convert.ToInt32(command.ClientId);
                     }
+
+                    _context.ReportActions.Add(new ReportAction { Table = "Records", Operation = Operations.Edit.ToString(), DateOffered = DateTime.Now });
 
                     _context.SaveChanges();
 

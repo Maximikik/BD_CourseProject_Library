@@ -1,0 +1,189 @@
+﻿<Window x:Class="BD_CourseProject_Library.Views.Journal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BD_CourseProject_Library.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+        mc:Ignorable="d" 
+        Title="Journal" Height="700" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Label Foreground="Black" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Journal of Rents</Label>
+        <Border HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2" BorderThickness="1" Margin="7" 
+                    BorderBrush="Black" CornerRadius="2">
+
+            <ListView Width="500"  Foreground="Black" FontSize="15" Name="ListRents"  HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" />
+                        <GridViewColumn Header="Client Id" DisplayMemberBinding="{Binding ClientId}"/>
+                        <GridViewColumn Header="Book Id" DisplayMemberBinding="{Binding BookId}"/>
+                        <GridViewColumn Header="Date offered" DisplayMemberBinding="{Binding DateOffered}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Border>
+
+        <Border Margin="5" Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="2" CornerRadius="2">
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <DatePicker Margin="10"
+                        materialDesign:HintAssist.Hint="Date starts"
+                         Name="DatePickerStartRents1" Background="#F0F0F0"
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                <DatePicker Margin="10"
+                materialDesign:HintAssist.Hint="Date ends"
+                        Name="DatePickerEndRents1" Background="#F0F0F0" 
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="1" Margin="7" CornerRadius="3" BorderThickness="3" BorderBrush="Black">
+            <Label HorizontalAlignment="Left" VerticalAlignment="Center"
+                   FontSize="30" Margin="10 60 0 0">Order by</Label>
+        </Border>
+        <WrapPanel Grid.Column="1" Grid.Row="1">
+            <Label Foreground="Black" Margin="20" FontSize="20">Desc</Label>
+            <ToggleButton Name="DescOrAsc1"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 30 0 0"
+                      Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="True"
+                      ToolTip="Default ToggleButton Style" Click="DescOrAsc_Click" Checked="DescOrAsc_Checked"/>
+            <Label Foreground="Black" Margin="20" FontSize="20">Asc</Label>
+        </WrapPanel>
+        <StackPanel Margin="20" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom">
+            <StackPanel    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                            Background="#F0F0F0">
+                <RadioButton Name="RadioId1"
+                                Margin="5"
+                                Content="Id"
+                                Foreground="Black"
+                                IsChecked="False" 
+                                Style="{StaticResource MaterialDesignTabRadioButtonBottom}" />
+
+                <RadioButton Name="RadioOperation1"
+                            Margin="5"
+                            Foreground="Black"
+                            Content="Operation"
+                            IsChecked="False" 
+                            Style="{StaticResource MaterialDesignTabRadioButtonBottom}"  />
+
+
+                <RadioButton Name="RadioTable1"
+                            Margin="5"
+                            Content="Id"
+                            Foreground="Black"
+                            IsChecked="False" 
+                            Style="{StaticResource MaterialDesignTabRadioButtonBottom}"/>
+                <RadioButton Name="RadioDate1"
+                            Margin="5"
+                            Foreground="Black"
+                            Content="Name"
+                            IsChecked="False" 
+                            Style="{StaticResource MaterialDesignTabRadioButtonBottom}"/>
+            </StackPanel>
+        </StackPanel>
+
+
+
+
+
+
+
+
+        <Label Foreground="Black" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Journal of Actions</Label>
+        <Border HorizontalAlignment="Center" Grid.Row="3" Grid.Column="2" BorderThickness="1" Margin="7" 
+                    BorderBrush="Black" CornerRadius="2">
+
+            <ListView  Width="500"  Foreground="Black" FontSize="15" Name="ListActions"  HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Operation" DisplayMemberBinding="{Binding Operation}"/>
+                        <GridViewColumn Header="Table" DisplayMemberBinding="{Binding Table}"/>
+                        <GridViewColumn Header="Book " DisplayMemberBinding="{Binding DateOffered}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            
+        </Border>
+
+        <Button Grid.Column="0" Grid.Row="0" Name="ButtonBack"
+                BorderThickness="3"
+                Margin="5"
+                Width="auto"
+                Height="auto"
+                Content="Back"
+                Foreground="Black"
+                FontSize="20"
+                Style="{StaticResource MaterialDesignOutlinedLightButton}" Click="ButtonBack_Click">
+            
+        </Button>
+
+        <Border Margin="5" Grid.Row="3" Grid.Column="0" BorderBrush="Black" BorderThickness="2" CornerRadius="2">
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <DatePicker Margin="10"
+                        materialDesign:HintAssist.Hint="Date starts"
+                         Name="DatePickerStartRents" Background="#F0F0F0"
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                <DatePicker Margin="10"
+                materialDesign:HintAssist.Hint="Date ends"
+                        Name="DatePickerEndRents" Background="#F0F0F0" 
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="3" Margin="7" CornerRadius="3" BorderThickness="3" BorderBrush="Black">
+            <Label HorizontalAlignment="Left" VerticalAlignment="Center"
+                   FontSize="30" Margin="10 60 0 0">Order by</Label>
+        </Border>
+        <WrapPanel Grid.Column="1" Grid.Row="3">
+            <Label Foreground="Black" Margin="20" FontSize="20">Desc</Label>
+            <ToggleButton Name="DescOrAsc"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 30 0 0"
+                      Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="True"
+                      ToolTip="Default ToggleButton Style" Click="DescOrAsc_Click" Checked="DescOrAsc_Checked"/>
+            <Label Foreground="Black" Margin="20" FontSize="20">Asc</Label>
+        </WrapPanel>
+        <StackPanel Margin="20" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom">
+            <StackPanel    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                            Background="#F0F0F0">
+                    <RadioButton Name="RadioId"
+                                Margin="5"
+                                Content="Id"
+                                Foreground="Black"
+                                IsChecked="False" 
+                                Style="{StaticResource MaterialDesignTabRadioButtonBottom}" />
+                    
+                    <RadioButton Name="RadioOperation"
+                            Margin="5"
+                            Foreground="Black"
+                            Content="Operation"
+                            IsChecked="False" 
+                            Style="{StaticResource MaterialDesignTabRadioButtonBottom}"  />
+            
+  
+                    <RadioButton Name="RadioTable"
+                            Margin="5"
+                            Content="Id"
+                            Foreground="Black"
+                            IsChecked="False" 
+                            Style="{StaticResource MaterialDesignTabRadioButtonBottom}"/>
+                    <RadioButton Name="RadioDate"
+                            Margin="5"
+                            Foreground="Black"
+                            Content="Name"
+                            IsChecked="False" 
+                            Style="{StaticResource MaterialDesignTabRadioButtonBottom}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

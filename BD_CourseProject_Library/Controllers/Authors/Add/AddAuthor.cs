@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using BD_CourseProject_Library.Models;
+using System;
+using System.Linq;
 
 namespace BD_CourseProject_Library.Controllers.Authors.Add
 {
-    public static class AddAuthor
+    public static class AddAuthor 
     {
         public static bool Add(LibraryDbContext _context, AddAuthorCommand command)
         {
@@ -10,6 +12,7 @@ namespace BD_CourseProject_Library.Controllers.Authors.Add
             {
                 _context.Authors.Add(new Models.Author() { Name = command.authorName });
                 _context.SaveChanges();
+                _context.ReportActions.Add( new ReportAction { Table= "Authors", Operation= Operations.Add.ToString(), DateOffered = DateTime.Now } );
 
                 return true;
             }

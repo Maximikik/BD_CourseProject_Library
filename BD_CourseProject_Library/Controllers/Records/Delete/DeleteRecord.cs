@@ -19,6 +19,8 @@ namespace BD_CourseProject_Library.Controllers.Records.Delete
                 _context.Records.Remove(element);
                 _context.SaveChanges();
 
+                _context.ReportActions.Add(new ReportAction { Table = "Records", Operation = Operations.Delete.ToString(), DateOffered = DateTime.Now });
+
                 return true;
             }
 

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using BD_CourseProject_Library.Models;
+using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace BD_CourseProject_Library.Controllers.Clients.Add
@@ -11,6 +13,9 @@ namespace BD_CourseProject_Library.Controllers.Clients.Add
             {
                 _context.Clients.Add(new Models.Client() { Name = command.Name, Surname = command.Surname, PhoneNumber = command.PhoneNumber} );
                 _context.SaveChanges();
+
+                _context.ReportActions.Add(new ReportAction { Table = "Clients", Operation = Operations.Add.ToString(), DateOffered = DateTime.Now });
+
                 return true;
             }
 

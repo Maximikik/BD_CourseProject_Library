@@ -20,7 +20,9 @@ namespace BD_CourseProject_Library.Controllers.Records.Add
                         RentDateEnd = command.RentDateEnd, 
                         ClientId =  Convert.ToInt32(command.ClientId)
                     });
-                    //_context.ReportRents.Add(new ReportRent { BookId = book.Id, ClientId = Convert.ToInt32(command.ClientId), DateOffered = DateTime.Now });
+                    _context.ReportRents.Add(new ReportRent { BookId = book.Id, ClientId = Convert.ToInt32(command.ClientId), DateOffered = DateTime.Now });
+
+                    _context.ReportActions.Add(new ReportAction { Table = "Records", Operation = Operations.Add.ToString(), DateOffered = DateTime.Now });
 
                     _context.SaveChanges();
                     return true;

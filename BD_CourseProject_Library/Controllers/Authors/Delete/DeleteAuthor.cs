@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using BD_CourseProject_Library.Models;
+using System;
+using System.Linq;
 
 namespace BD_CourseProject_Library.Controllers.Authors.Delete
 {
@@ -12,6 +14,7 @@ namespace BD_CourseProject_Library.Controllers.Authors.Delete
             {
                 _context.Authors.Remove(element);
                 _context.SaveChanges();
+                _context.ReportActions.Add(new ReportAction { Table = "Authors", Operation = Operations.Delete.ToString(), DateOffered = DateTime.Now });
 
                 return true;
             }

@@ -15,8 +15,6 @@ namespace BD_CourseProject_Library.Models
 
         public virtual string Table { get; set; } = null!;
 
-        public virtual string? Column { get; set; }
-
-        public DateTime Date { get; set; }
+        public DateTime DateOffered { get; set; }
     }
 }

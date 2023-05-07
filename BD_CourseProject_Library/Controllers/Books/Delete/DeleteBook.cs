@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using BD_CourseProject_Library.Models;
+using System;
+using System.Linq;
 
 namespace BD_CourseProject_Library.Controllers.Books.Delete
 {
@@ -11,7 +13,10 @@ namespace BD_CourseProject_Library.Controllers.Books.Delete
             if (element != null ) 
             {
                 _context.Books.Remove( element );
+                _context.ReportActions.Add(new ReportAction { Table = "Books", Operation = Operations.Delete.ToString(), DateOffered = DateTime.Now });
+
                 _context.SaveChanges();
+
                 return true;
             }
 

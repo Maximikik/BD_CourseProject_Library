@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using BD_CourseProject_Library.Models;
+using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace BD_CourseProject_Library.Controllers.Clients.Edit
@@ -20,6 +22,9 @@ namespace BD_CourseProject_Library.Controllers.Clients.Edit
                     if (_name != string.Empty) element.Name = _name;
                     if (_surname != string.Empty) element.Surname = _surname;
                     if (_phoneNumber != string.Empty) element.PhoneNumber = _phoneNumber;
+
+                    _context.ReportActions.Add(new ReportAction { Table = "Clients", Operation = Operations.Edit.ToString(), DateOffered = DateTime.Now });
+
                     _context.SaveChanges();
                     return true;
                 }

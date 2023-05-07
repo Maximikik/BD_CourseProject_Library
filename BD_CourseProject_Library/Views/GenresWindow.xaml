@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:BD_CourseProject_Library.Views"
         mc:Ignorable="d"
         Title="GenresWindow" Height="700" Width="1300">
-    <Grid Background="MediumPurple">
+    <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -21,7 +21,7 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Border Margin="7" BorderBrush="Black" BorderThickness="2" CornerRadius="3" Grid.Row="1" Grid.Column="3">
-                <ListView Foreground="White" FontSize="15" Name="MainList"  HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <ListView Foreground="Black" FontSize="15" Name="MainList"  HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
@@ -36,7 +36,7 @@
                 Width="auto"
                 Height="auto"
                 Content="Add record"
-                Foreground="White"
+                Foreground="Black"
                 FontSize="20"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonAdd_Click" />
@@ -46,7 +46,7 @@
                 Width="auto"
                 Height="auto"
                 Content="Edit record"
-                Foreground="White"
+                Foreground="Black"
                 FontSize="20"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonEdit_Click" />
@@ -56,7 +56,7 @@
                 Width="auto"
                 Height="auto"
                 Content="Delete record"
-                Foreground="White"
+                Foreground="Black"
                 FontSize="20"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}"
                 ToolTip="MaterialDesignOutlinedButton" Click="ButtonDelete_Click" />
@@ -82,7 +82,7 @@
                 <StackPanel Height="auto">
                     <Label FontSize="20">Fill the data below to edit</Label>
                     <ComboBox Name="ComboBoxGenreIdEdit" Margin="5" Padding="16 10 10 10"
-                          materialDesign:HintAssist.Hint="Genre Id" Background="#8969CE">
+                          materialDesign:HintAssist.Hint="Genre Id" Background="#F0F0F0">
                     </ComboBox>
                     <TextBox
                         Margin="5"
@@ -102,7 +102,7 @@
                 <StackPanel Height="auto">
                     <Label FontSize="20">Fill the id below to delete</Label>
                     <ComboBox Name="ComboBoxGenreIdDelete" Margin="5" Padding="16 10 10 10"
-                          materialDesign:HintAssist.Hint="Genre Id" Background="#8969CE">
+                          materialDesign:HintAssist.Hint="Genre Id" Background="#F0F0F0">
                     </ComboBox>
                 </StackPanel>
             </Border>
@@ -112,7 +112,7 @@
                 Width="auto"
                 Height="auto"
                 Content="Back"
-                Foreground="White"
+                Foreground="Black"
                 FontSize="20"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}" Click="ButtonBack_Click"></Button>
 
@@ -121,14 +121,14 @@
                    FontSize="30">Order by</Label>
             </Border>
             <WrapPanel Grid.Column="4" Grid.Row="0">
-                <Label Foreground="White" Margin="20" FontSize="20">Desc</Label>
+                <Label Foreground="Black" Margin="20" FontSize="20">Desc</Label>
                 <ToggleButton Name="DescOrAsc"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 30 0 0"
                       Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="True"
                       ToolTip="Default ToggleButton Style" Click="DescOrAsc_Click"/>
-                <Label Foreground="White" Margin="20" FontSize="20">Asc</Label>
+                <Label Foreground="Black" Margin="20" FontSize="20">Asc</Label>
             </WrapPanel>
 
-            <StackPanel Grid.Column="4" Grid.Row="0"  HorizontalAlignment="Center" Background="#AA64F0"
+            <StackPanel Grid.Column="4" Grid.Row="0"  HorizontalAlignment="Center" Background="#F0F0F0"
                         VerticalAlignment="Bottom"
                         Margin="20"
                         Orientation="Horizontal">
@@ -136,12 +136,12 @@
                 <RadioButton Name="RadioId"
                         Margin="0 0 25 4"
                         Content="Id"
-                        Foreground="White"
+                        Foreground="Black"
                         IsChecked="False" 
                         Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="OrderId_Click" />
                 <RadioButton Name="RadioName"
                         Margin="0 0 25 4"
-                        Foreground="White"
+                        Foreground="Black"
                         Content="Name"
                         IsChecked="False" 
                         Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="OrderName_Click" />

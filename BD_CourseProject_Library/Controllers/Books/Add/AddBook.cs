@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using BD_CourseProject_Library.Models;
+using System;
+using System.Linq;
 
 namespace BD_CourseProject_Library.Controllers.Books.Add
 {
@@ -14,7 +16,10 @@ namespace BD_CourseProject_Library.Controllers.Books.Add
                 if (authorId != null && genreId != null && !command.Name.Any(char.IsDigit))
                 {
                     _context.Books.Add(new Models.Book { Name = command.Name, AuthorId = authorId.Id, GenreId = genreId.Id, Quantity = command.Quantity });
+                    _context.ReportActions.Add(new ReportAction { Table = "Books", Operation = Operations.Add.ToString(), DateOffered = DateTime.Now });
+
                     _context.SaveChanges();
+                    
                     return true;
                 }
             }

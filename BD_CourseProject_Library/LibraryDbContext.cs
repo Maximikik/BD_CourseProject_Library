@@ -20,7 +20,7 @@ namespace BD_CourseProject_Library
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=Library;Trusted_Connection=true;Encrypt=false;TrustServerCertificate=false");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=Library;Trusted_Connection=true;Encrypt=false;TrustServerCertificate=false");
             
         }
 

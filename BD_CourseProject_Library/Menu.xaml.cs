@@ -14,15 +14,18 @@ namespace BD_CourseProject_Library
         ClientsWindow clients { get; set; }
         RecordsWindow records { get; set; }
 
+        Journal journal { get; set; }
 
         public Menu()
         {
             InitializeComponent();
+
             authors = new AuthorsWindow();
             books = new BooksWindow();
             genres = new GenresWindow();
             clients = new ClientsWindow();
             records = new RecordsWindow();
+            journal = new Journal();
         }
 
         private void ButtonAuthors_Click(object sender, RoutedEventArgs e)
@@ -52,6 +55,12 @@ namespace BD_CourseProject_Library
         private void ButtonRecords_Click(object sender, RoutedEventArgs e)
         {
             records.Show();
+            this.Hide();
+        }
+
+        private void ButtonRents_Click(object sender, RoutedEventArgs e)
+        {
+            journal.Show();
             this.Hide();
         }
     }

@@ -6,18 +6,18 @@ namespace BD_CourseProject_Library.Models
 {
     public static class ReportRentDisplayConfigurator
     {
-        //public static List<ReportDisplay> GetReports(LibraryDbContext _context)
-        //{
-        //    var reports = new List<ReportDisplay>();
-        //    foreach (var item in _context.ReportRents)
-        //    {
-        //        var tempBook = _context.Books.FirstOrDefault(x => x.Id == item.BookId);
-        //        var tempClient = _context.Clients.FirstOrDefault(x => x.Id == item.ClientId);
-        //        reports.Add(new ReportDisplay { BookName = tempBook.Name, ClientName = tempClient.Name, ClientSurname = tempClient.Surname, DateOffered = item.DateOffered });
-        //    }
+        public static List<ReportDisplay> GetReports(LibraryDbContext _context)
+        {
+            var reports = new List<ReportDisplay>();
+            foreach (var item in _context.ReportRents)
+            {
+                var tempBook = _context.Books.FirstOrDefault(x => x.Id == item.BookId);
+                var tempClient = _context.Clients.FirstOrDefault(x => x.Id == item.ClientId);
+                //reports.Add(new ReportDisplay { BookName = tempBook.Name, ClientName = tempClient.Name, ClientSurname = tempClient.Surname, DateOffered = DateOnly.FromDateTime(item.DateOffered) });
+            }
 
-        //    return reports;
-        //}
+            return reports;
+        }
 
 
         public class ReportDisplay
@@ -29,7 +29,7 @@ namespace BD_CourseProject_Library.Models
 
             public string BookName { get; set; } = null!;
 
-            public DateTime DateOffered { get; set; }
+            public DateOnly DateOffered { get; set; }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using BD_CourseProject_Library.Models;
+using System;
+using System.Linq;
 using System.Threading;
 
 namespace BD_CourseProject_Library.Controllers.Authors.Edit
@@ -18,6 +20,7 @@ namespace BD_CourseProject_Library.Controllers.Authors.Edit
                 if (element != null) 
                 {
                     element.Name = _authorName;
+                    _context.ReportActions.Add(new ReportAction { Table = "Authors", Operation = Operations.Edit.ToString(), DateOffered = DateTime.Now });
 
                     _context.SaveChanges();
 
