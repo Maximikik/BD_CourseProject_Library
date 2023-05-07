@@ -56,39 +56,39 @@
         </Border>
         <WrapPanel Grid.Column="1" Grid.Row="1">
             <Label Foreground="Black" Margin="20" FontSize="20">Desc</Label>
-            <ToggleButton Name="DescOrAsc1"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 30 0 0"
+            <ToggleButton Name="DescOrAscRents"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 30 0 0"
                       Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="True"
-                      ToolTip="Default ToggleButton Style" Click="DescOrAsc_Click" Checked="DescOrAsc_Checked"/>
+                      ToolTip="Default ToggleButton Style" Click="DescOrAscRents_Click"/>
             <Label Foreground="Black" Margin="20" FontSize="20">Asc</Label>
         </WrapPanel>
         <StackPanel Margin="20" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom">
             <StackPanel    HorizontalAlignment="Right" VerticalAlignment="Bottom"
                             Background="#F0F0F0">
-                <RadioButton Name="RadioId1"
+                <RadioButton Name="RadioIdRents" Checked="RentsIdClick"
                                 Margin="5"
                                 Content="Id"
                                 Foreground="Black"
                                 IsChecked="False" 
                                 Style="{StaticResource MaterialDesignTabRadioButtonBottom}" />
 
-                <RadioButton Name="RadioOperation1"
+                <RadioButton Name="RadioClientId" Checked="ClientIdClick"
                             Margin="5"
                             Foreground="Black"
-                            Content="Operation"
+                            Content="CLient Id"
                             IsChecked="False" 
                             Style="{StaticResource MaterialDesignTabRadioButtonBottom}"  />
 
 
-                <RadioButton Name="RadioTable1"
+                <RadioButton Name="RadioBookId" Checked="RentsBookIdClick"
                             Margin="5"
-                            Content="Id"
+                            Content="Book Id"
                             Foreground="Black"
                             IsChecked="False" 
                             Style="{StaticResource MaterialDesignTabRadioButtonBottom}"/>
-                <RadioButton Name="RadioDate1"
+                <RadioButton Name="RadioDateRents" Checked="RentsDateClick"
                             Margin="5"
                             Foreground="Black"
-                            Content="Name"
+                            Content="Date"
                             IsChecked="False" 
                             Style="{StaticResource MaterialDesignTabRadioButtonBottom}"/>
             </StackPanel>
@@ -111,7 +111,7 @@
                         <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
                         <GridViewColumn Header="Operation" DisplayMemberBinding="{Binding Operation}"/>
                         <GridViewColumn Header="Table" DisplayMemberBinding="{Binding Table}"/>
-                        <GridViewColumn Header="Book " DisplayMemberBinding="{Binding DateOffered}"/>
+                        <GridViewColumn Header="Date " DisplayMemberBinding="{Binding DateOffered}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -148,22 +148,22 @@
         </Border>
         <WrapPanel Grid.Column="1" Grid.Row="3">
             <Label Foreground="Black" Margin="20" FontSize="20">Desc</Label>
-            <ToggleButton Name="DescOrAsc"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 30 0 0"
+            <ToggleButton Name="DescOrAscActions"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 30 0 0"
                       Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="True"
-                      ToolTip="Default ToggleButton Style" Click="DescOrAsc_Click" Checked="DescOrAsc_Checked"/>
+                      ToolTip="Default ToggleButton Style" Click="DescOrAscActions_Click"/>
             <Label Foreground="Black" Margin="20" FontSize="20">Asc</Label>
         </WrapPanel>
         <StackPanel Margin="20" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom">
             <StackPanel    HorizontalAlignment="Right" VerticalAlignment="Bottom"
                             Background="#F0F0F0">
-                    <RadioButton Name="RadioId"
+                    <RadioButton Name="RadioId" Checked="ActionIdClick"
                                 Margin="5"
                                 Content="Id"
                                 Foreground="Black"
                                 IsChecked="False" 
                                 Style="{StaticResource MaterialDesignTabRadioButtonBottom}" />
-                    
-                    <RadioButton Name="RadioOperation"
+
+                    <RadioButton Name="RadioOperation" Checked="RadioOperationClick"
                             Margin="5"
                             Foreground="Black"
                             Content="Operation"
@@ -171,16 +171,16 @@
                             Style="{StaticResource MaterialDesignTabRadioButtonBottom}"  />
             
   
-                    <RadioButton Name="RadioTable"
+                    <RadioButton Name="RadioTable" Checked="RadioTableClick"
                             Margin="5"
-                            Content="Id"
+                            Content="Table"
                             Foreground="Black"
                             IsChecked="False" 
-                            Style="{StaticResource MaterialDesignTabRadioButtonBottom}"/>
-                    <RadioButton Name="RadioDate"
+                            Style="{StaticResource MaterialDesignTabRadioButtonBottom}" />
+                    <RadioButton Name="RadioDate" Checked="ActionsDateClick"
                             Margin="5"
                             Foreground="Black"
-                            Content="Name"
+                            Content="Date"
                             IsChecked="False" 
                             Style="{StaticResource MaterialDesignTabRadioButtonBottom}"/>
             </StackPanel>

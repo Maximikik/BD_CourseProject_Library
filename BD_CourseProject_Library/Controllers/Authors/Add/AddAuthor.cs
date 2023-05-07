@@ -11,8 +11,9 @@ namespace BD_CourseProject_Library.Controllers.Authors.Add
             if (Validate(command))
             {
                 _context.Authors.Add(new Models.Author() { Name = command.authorName });
-                _context.SaveChanges();
                 _context.ReportActions.Add( new ReportAction { Table= "Authors", Operation= Operations.Add.ToString(), DateOffered = DateTime.Now } );
+                
+                _context.SaveChanges();
 
                 return true;
             }

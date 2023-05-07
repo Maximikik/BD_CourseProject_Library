@@ -13,8 +13,9 @@ namespace BD_CourseProject_Library.Controllers.Authors.Delete
             if (element != null)
             {
                 _context.Authors.Remove(element);
-                _context.SaveChanges();
                 _context.ReportActions.Add(new ReportAction { Table = "Authors", Operation = Operations.Delete.ToString(), DateOffered = DateTime.Now });
+
+                _context.SaveChanges();
 
                 return true;
             }

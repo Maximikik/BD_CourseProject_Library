@@ -58,7 +58,7 @@ namespace BD_CourseProject_Library
             this.Hide();
         }
 
-        private void ButtonRents_Click(object sender, RoutedEventArgs e)
+        private void ButtonJournals_Click(object sender, RoutedEventArgs e)
         {
             journal.Show();
             this.Hide();

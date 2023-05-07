@@ -113,7 +113,7 @@
                 Width="auto"
                 Height="auto"
                 Content="Back"
-                Foreground="White"
+                Foreground="Black"
                 FontSize="20"
                 Style="{StaticResource MaterialDesignOutlinedLightButton}" Click="ButtonBack_Click"></Button>
 

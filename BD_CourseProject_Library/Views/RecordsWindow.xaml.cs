@@ -26,7 +26,6 @@ namespace BD_CourseProject_Library.Views
         private void ConfigureWindow()
         {
             MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
-           //ListRents.ItemsSource = ReportRentDisplayConfigurator.GetReports(_context);
 
             ComboBoxBookIdEdit.ItemsSource = _context.Books.Select(x => x.Id).ToList();
             ComboBoxClientId.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
