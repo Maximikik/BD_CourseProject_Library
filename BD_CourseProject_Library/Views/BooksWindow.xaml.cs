@@ -5,6 +5,9 @@ using System;
 using System.Linq;
 using System.Windows;
 using BD_CourseProject_Library.Models;
+using MaterialDesignThemes.Wpf;
+using BD_CourseProject_Library.Controllers.Authors.Add;
+using BD_CourseProject_Library.Controllers.Genres.Add;
 
 namespace BD_CourseProject_Library.Views
 {
@@ -274,6 +277,64 @@ namespace BD_CourseProject_Library.Views
                     }
                 }
             }
+        }
+
+        private void AcceptButtonAuthors_Click(object sender, RoutedEventArgs e)
+        {
+            if (NameTextBox.Text != string.Empty)
+            {
+                var command = new AddAuthorCommand { authorName = NameTextBox.Text };
+
+                if (!AddAuthor.Add(_context, command))
+                {
+                    MessageBox.Show("Error!");
+                }
+                else
+                {
+                    DialogHost.CloseDialogCommand.Execute(null, null);
+
+                    NameTextBox.Clear();
+
+                    ComboBoxAuthorId.ItemsSource = _context.Authors.Select(x => x.Name).ToList();
+
+                    ComboBoxAuthorIdEdit.ItemsSource = _context.Authors.Select(x => x.Name).ToList();
+                }
+            }
+            else MessageBox.Show("Error!");
+        }
+
+        private void AcceptButtonGenre_Click(object sender, RoutedEventArgs e)
+        {
+            if (NameTextBox.Text != string.Empty)
+            {
+                var command = new AddGenreCommand { Name = NameTextBoxGenre.Text };
+
+                if (!AddGenre.Add(_context, command))
+                {
+                    MessageBox.Show("Error!");
+                }
+                else
+                {
+                    DialogHost.CloseDialogCommand.Execute(null, null);
+
+                    NameTextBoxGenre.Clear();
+
+                    ComboBoxGenreId.ItemsSource = _context.Genres.Select(x => x.Name).ToList();
+
+                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Name).ToList();
+                }
+            }
+            else MessageBox.Show("Error!");
+        }
+
+        private void ButtonAddAuthor_Click(object sender, RoutedEventArgs e)
+        {
+            DIalogAddAuthor.ShowDialog(DIalogAddAuthor.Content);
+        }
+
+        private void ButtonAddGenre_Click(object sender, RoutedEventArgs e)
+        {
+            DIalogAddAuthor.ShowDialog(DIalogAddAuthor.Content);
         }
     }
 }

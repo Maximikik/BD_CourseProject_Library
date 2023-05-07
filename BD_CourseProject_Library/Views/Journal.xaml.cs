@@ -1,6 +1,10 @@
-﻿using BD_CourseProject_Library.Models.DisplayConfigs;
+﻿using BD_CourseProject_Library.Models;
+using BD_CourseProject_Library.Models.DisplayConfigs;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace BD_CourseProject_Library.Views
 {
@@ -211,6 +215,85 @@ namespace BD_CourseProject_Library.Views
             }
         }
 
- 
+        private void ButtonApplyActions_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonApplyRents_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DateRentStartChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+            if (DatePickerEndRents.Text != string.Empty)
+                ListRents.ItemsSource = _context.ReportRents.Where(x => x.DateOffered <= DateTime.Parse(DatePickerEndRents.Text) && x.DateOffered >= DateTime.Parse(DatePickerStartRents.Text)).OrderBy(x => x.Id).ToList();
+        }
+
+        private void DatePickerStartRents_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            if (DatePickerStartRents.Text != string.Empty && DatePickerEndRents.Text != string.Empty)
+            {
+                ListRents.ItemsSource = _context.ReportRents.Where(x => x.DateOffered < DateTime.Parse(DatePickerEndRents.Text) && x.DateOffered > DateTime.Parse(DatePickerStartRents.Text)).OrderBy(x => x.Id).ToList();
+            }
+            else if (DatePickerStartRents.Text == string.Empty && DatePickerEndRents.Text != string.Empty)
+            {
+                ListRents.ItemsSource = _context.ReportRents.Where(x => x.DateOffered < DateTime.Parse(DatePickerEndRents.Text)).OrderBy(x => x.Id).ToList();
+            }
+            else if (DatePickerStartRents.Text != string.Empty && DatePickerEndRents.Text == string.Empty)
+            {
+                ListRents.ItemsSource = _context.ReportRents.Where(x => x.DateOffered > DateTime.Parse(DatePickerStartRents.Text)).OrderBy(x => x.Id).ToList();
+            }
+        }
+
+        private void DatePickerEndRents_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            if (DatePickerStartRents.Text != string.Empty && DatePickerEndRents.Text != string.Empty)
+            {
+                ListRents.ItemsSource = _context.ReportRents.Where(x => x.DateOffered < DateTime.Parse(DatePickerEndRents.Text) && x.DateOffered > DateTime.Parse(DatePickerStartRents.Text)).OrderBy(x => x.Id).ToList();
+            }
+            else if (DatePickerStartRents.Text == string.Empty && DatePickerEndRents.Text != string.Empty)
+            {
+                ListRents.ItemsSource = _context.ReportRents.Where(x => x.DateOffered < DateTime.Parse(DatePickerEndRents.Text)).OrderBy(x => x.Id).ToList();
+            }
+            else if (DatePickerStartRents.Text != string.Empty && DatePickerEndRents.Text == string.Empty)
+            {
+                ListRents.ItemsSource = _context.ReportRents.Where(x => x.DateOffered > DateTime.Parse(DatePickerStartRents.Text)).OrderBy(x => x.Id).ToList();
+            }
+        }
+
+        private void DatePickerStartActions_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            if (DatePickerStartActions.Text != string.Empty && DatePickerEndActions.Text != string.Empty)
+            {
+                ListActions.ItemsSource = ReportActionsDisplayConfigurator.GetActions(_context).Where(x => x.DateOffered < DateOnly.Parse(DatePickerEndActions.Text) && x.DateOffered > DateOnly.Parse(DatePickerStartActions.Text)).OrderBy(x => x.Id).ToList();
+            }
+            else if (DatePickerStartActions.Text == string.Empty && DatePickerEndActions.Text != string.Empty)
+            {
+                ListActions.ItemsSource = ReportActionsDisplayConfigurator.GetActions(_context).Where(x => x.DateOffered < DateOnly.Parse(DatePickerEndActions.Text)).OrderBy(x => x.Id).ToList();
+            }
+            else if (DatePickerStartActions.Text != string.Empty && DatePickerEndActions.Text == string.Empty)
+            {
+                ListActions.ItemsSource = ReportActionsDisplayConfigurator.GetActions(_context).Where(x => x.DateOffered > DateOnly.Parse(DatePickerStartActions.Text)).OrderBy(x => x.Id).ToList();
+            }
+        }
+
+        private void DatePickerEndActions_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            if (DatePickerStartActions.Text != string.Empty && DatePickerEndActions.Text != string.Empty)
+            {
+                ListActions.ItemsSource = ReportActionsDisplayConfigurator.GetActions(_context).Where(x => x.DateOffered < DateOnly.Parse(DatePickerEndActions.Text) && x.DateOffered > DateOnly.Parse(DatePickerStartActions.Text)).OrderBy(x => x.Id).ToList();
+            }
+            else if (DatePickerStartActions.Text == string.Empty && DatePickerEndActions.Text != string.Empty)
+            {
+                ListActions.ItemsSource = ReportActionsDisplayConfigurator.GetActions(_context).Where(x => x.DateOffered < DateOnly.Parse(DatePickerEndActions.Text)).OrderBy(x => x.Id).ToList();
+            }
+            else if (DatePickerStartActions.Text != string.Empty && DatePickerEndActions.Text == string.Empty)
+            {
+                ListActions.ItemsSource = ReportActionsDisplayConfigurator.GetActions(_context).Where(x => x.DateOffered > DateOnly.Parse(DatePickerStartActions.Text)).OrderBy(x => x.Id).ToList();
+            }
+        }
     }
 }

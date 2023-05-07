@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:BD_CourseProject_Library.Views"
+        xmlns:local="clr-namespace:BD_CourseProject_Library.Views" xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="RecordsWindow" Height="655" Width="1300">
     <Grid>
@@ -175,6 +175,104 @@
                         IsChecked="False" 
                         Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="RadioClientId_Checked"/>
             </StackPanel>
+
+
+
+
+            <StackPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center">
+                <Button x:Name="ButtonAddBook" Click="ButtonAddBook_Click"
+                      Content="Add book" Margin="10"
+                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                      Style="{StaticResource MaterialDesignPaperLightButton}"
+                      ToolTip="Resource name: MaterialDesignPaperLightButton" />
+                <Button x:Name="ButtonAddClient" Click="ButtonAddClient_Click"
+                      Content="Add client" Margin="10"
+                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                      Style="{StaticResource MaterialDesignPaperLightButton}"
+                      ToolTip="Resource name: MaterialDesignPaperLightButton" />
+            </StackPanel>
+            <materialDesign:DialogHost Name="DIalogAddBook" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="16">
+                        <Grid Width="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <StackPanel>
+                            <TextBox
+                                Margin="5"
+                                materialDesign:HintAssist.Hint="Book name"
+                                Name="textBoxName"
+                                materialDesign:HintAssist.HelperText="length is 30 characters"/>
+                                    <ComboBox Name="ComboBoxAuthorId" Margin="5" Padding="16 10 10 10"
+                                  materialDesign:HintAssist.Hint="Author" >
+                                    </ComboBox>
+                                    <ComboBox Name="ComboBoxGenreId" Margin="5" Padding="16 10 10 10"
+                                  materialDesign:HintAssist.Hint="Genre">
+                                    </ComboBox>
+                                    <TextBox
+                                Margin="10"
+                                materialDesign:HintAssist.Hint="Quantity"
+                                materialDesign:HintAssist.Foreground="Gray"
+                                Name="textBoxQuantity"/>
+                            </StackPanel>
+                        </Grid>
+                        <!-- HERE GOES YOUR CONTENT -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Button x:Name="AcceptButtonBook" Click="AcceptButtonBook_Click"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    Content="ACCEPT" VerticalAlignment="Bottom"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                         IsCancel="True" Margin="0 8 8 0" 
+                         Command="materialDesign:DialogHost.CloseDialogCommand">
+                                <Button.CommandParameter>
+                                    <system:Boolean>False</system:Boolean>
+                                </Button.CommandParameter>
+                                CANCEL
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+
+            <materialDesign:DialogHost Name="DIalogAddClient" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="16">
+                        <Grid Width="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <StackPanel>
+                            <TextBox Margin="10"
+                              x:Name="TextBoxClientName"
+                              materialDesign:HintAssist.HelperText="length is 30 characters"
+                              materialDesign:HintAssist.Hint="Client name">
+                            </TextBox>
+                            <TextBox Margin="10"
+                              x:Name="TextBoxClientSurname"
+                              materialDesign:HintAssist.HelperText="length is 30 characters"
+                              materialDesign:HintAssist.Hint="Surname">
+                            </TextBox>
+                            <TextBox Margin="10"
+                              x:Name="TextBoxClientPhoneNumber"
+                              materialDesign:HintAssist.HelperText="length is 13 characters"
+                              materialDesign:HintAssist.Hint="Phone number">
+                            </TextBox>
+                            </StackPanel>
+                        </Grid>
+                        <!-- HERE GOES YOUR CONTENT -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Button x:Name="AcceptButtonClient" Click="AcceptButtonClient_Click"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    Content="ACCEPT" VerticalAlignment="Bottom"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                         IsCancel="True" Margin="0 8 8 0" 
+                         Command="materialDesign:DialogHost.CloseDialogCommand">
+                                <Button.CommandParameter>
+                                    <system:Boolean>False</system:Boolean>
+                                </Button.CommandParameter>
+                                CANCEL
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
 
         </Grid>
     </Grid>

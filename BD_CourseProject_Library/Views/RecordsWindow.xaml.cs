@@ -1,7 +1,11 @@
-﻿using BD_CourseProject_Library.Controllers.Records.Add;
+﻿using BD_CourseProject_Library.Controllers.Books.Add;
+using BD_CourseProject_Library.Controllers.Clients.Add;
+using BD_CourseProject_Library.Controllers.Genres.Add;
+using BD_CourseProject_Library.Controllers.Records.Add;
 using BD_CourseProject_Library.Controllers.Records.Delete;
 using BD_CourseProject_Library.Controllers.Records.Edit;
 using BD_CourseProject_Library.Models;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Linq;
 using System.Windows;
@@ -33,6 +37,9 @@ namespace BD_CourseProject_Library.Views
             ComboBoxRecordIdDelete.ItemsSource = _context.Records.Select(x => x.Id).ToList();
             ComboBoxRecordIdEdit.ItemsSource = _context.Records.Select(x => x.Id).ToList();
             ComboBoxBookName.ItemsSource = _context.Books.Select(x => x.Name).ToList();
+
+            ComboBoxAuthorId.ItemsSource = _context.Authors.Select(x => x.Name).ToList();
+            ComboBoxGenreId.ItemsSource = _context.Genres.Select(x => x.Name).ToList();
 
             DatePickerEnd.DisplayDateStart = DateTime.Parse("01-Jan-2015");
             DatePickerEnd.DisplayDateEnd = DateTime.Parse("01-Jan-2030");
@@ -310,6 +317,79 @@ namespace BD_CourseProject_Library.Views
                     }
                 }
             }
+        }
+
+        private void AcceptButtonBook_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBoxName.Text != string.Empty && textBoxQuantity.Text != string.Empty && ComboBoxAuthorId.Text != string.Empty && ComboBoxGenreId.Text != string.Empty)
+            {
+                int idTemp = -1;
+
+                if (!Int32.TryParse(textBoxQuantity.Text, out idTemp))
+                {
+                    MessageBox.Show("Error!");
+                    return;
+                }
+
+                var command = new AddBookCommand 
+                {
+                    Name = textBoxName.Text,
+                    Author = ComboBoxAuthorId.Text,
+                    Genre = ComboBoxGenreId.Text,
+                    Quantity = Convert.ToInt32(textBoxQuantity.Text)
+                };
+
+                if (!AddBook.Add(_context, command))
+                {
+                    MessageBox.Show("Error!");
+                }
+                else
+                {
+                    DialogHost.CloseDialogCommand.Execute(null, null);
+
+                    textBoxName.Clear();
+                    textBoxQuantity.Clear();
+
+                    ComboBoxBookIdEdit.ItemsSource = _context.Books.Select(x => x.Id).ToList();
+                    ComboBoxBookName.ItemsSource = _context.Books.Select(x => x.Name).ToList();
+                }
+            }
+            else MessageBox.Show("Error!");
+        }
+
+        private void AcceptButtonClient_Click(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxClientName.Text != string.Empty && TextBoxClientSurname.Text != string.Empty && TextBoxClientPhoneNumber.Text != string.Empty)
+            {
+                var command = new AddClientCommand { Name = TextBoxClientName.Text, Surname = TextBoxClientSurname.Text, PhoneNumber = TextBoxClientPhoneNumber.Text };
+
+                if (!AddClient.Add(_context, command))
+                {
+                    MessageBox.Show("Error!");
+                }
+                else
+                {
+                    DialogHost.CloseDialogCommand.Execute(null, null);
+
+                    TextBoxClientName.Clear();
+                    TextBoxClientSurname.Clear();
+                    TextBoxClientPhoneNumber.Clear();
+
+                    ComboBoxClientId.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
+                    ComboBoxClientIdEdit.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
+                }
+            }
+            else MessageBox.Show("Error!");
+        }
+
+        private void ButtonAddBook_Click(object sender, RoutedEventArgs e)
+        {
+            DIalogAddBook.ShowDialog(DIalogAddBook.Content);
+        }
+
+        private void ButtonAddClient_Click(object sender, RoutedEventArgs e)
+        {
+            DIalogAddClient.ShowDialog(DIalogAddClient.Content);
         }
     }
 }

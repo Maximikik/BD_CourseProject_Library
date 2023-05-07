@@ -69,7 +69,7 @@
         </Border>
         <StackPanel Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="30">
             <Button Background="LightGray" Foreground="Black"  HorizontalAlignment="Center" Margin="5" Width="200" Name="ButtonJournal" Click="ButtonJournals_Click">Journals</Button>
-            <Button Background="LightGray" Foreground="Black"  HorizontalAlignment="Center" Margin="5" Width="200" Name="ButtonReport" Click="ButtonJournals_Click">Report</Button>
+            <Button Background="LightGray" Foreground="Black"  HorizontalAlignment="Center" Margin="5" Width="200" Name="ButtonReport" Click="ButtonReports_Click">Report</Button>
         
         </StackPanel>
         

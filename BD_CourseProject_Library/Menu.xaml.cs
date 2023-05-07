@@ -13,8 +13,8 @@ namespace BD_CourseProject_Library
         GenresWindow genres { get; set; }
         ClientsWindow clients { get; set; }
         RecordsWindow records { get; set; }
-
         Journal journal { get; set; }
+        Report report { get; set; }
 
         public Menu()
         {
@@ -62,6 +62,11 @@ namespace BD_CourseProject_Library
         {
             journal.Show();
             this.Hide();
+        }
+
+        private void ButtonReports_Click(object sender, RoutedEventArgs e)
+        {
+            report.Show();
         }
     }
 }

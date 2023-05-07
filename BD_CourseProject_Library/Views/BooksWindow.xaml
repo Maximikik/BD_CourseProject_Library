@@ -4,8 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BD_CourseProject_Library.Views"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="BooksWindow" Height="700" Width="1700">
     <Grid>
@@ -205,6 +204,80 @@
                         IsChecked="False" 
                         Style="{StaticResource MaterialDesignTabRadioButtonBottom}" Checked="OrderQuantity_Click" />
             </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center">
+                <Button x:Name="ButtonAddAuthor" Click="ButtonAddAuthor_Click"
+                      Content="Add author" Margin="10"
+                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                      Style="{StaticResource MaterialDesignPaperLightButton}"
+                      ToolTip="Resource name: MaterialDesignPaperLightButton" />
+                <Button x:Name="ButtonAddGenre" Click="ButtonAddGenre_Click"
+                      Content="Add genre" Margin="10"
+                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                      Style="{StaticResource MaterialDesignPaperLightButton}"
+                      ToolTip="Resource name: MaterialDesignPaperLightButton" />
+            </StackPanel>
+            <materialDesign:DialogHost Name="DIalogAddAuthor" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="16">
+                        <Grid Width="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <TextBox Margin="10"
+                              x:Name="NameTextBox"
+                              materialDesign:HintAssist.HelperText="length is 30 characters"
+                              materialDesign:HintAssist.Hint="Author name">
+                            </TextBox>
+                            
+                        </Grid>
+                        <!-- HERE GOES YOUR CONTENT -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Button x:Name="AcceptButton" Click="AcceptButtonAuthors_Click"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    Content="ACCEPT" VerticalAlignment="Bottom"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                         IsCancel="True" Margin="0 8 8 0" 
+                         Command="materialDesign:DialogHost.CloseDialogCommand">
+                                <Button.CommandParameter>
+                                    <system:Boolean>False</system:Boolean>
+                                </Button.CommandParameter>
+                                CANCEL
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                </materialDesign:DialogHost.DialogContent>
+                        
+            </materialDesign:DialogHost>
+
+            <materialDesign:DialogHost Name="DIalogAddGenre" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="16">
+                        <Grid Width="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <TextBox Margin="10"
+                              x:Name="NameTextBoxGenre"
+                              materialDesign:HintAssist.HelperText="length is 30 characters"
+                              materialDesign:HintAssist.Hint="Genre name">
+                            </TextBox>
+
+                        </Grid>
+                        <!-- HERE GOES YOUR CONTENT -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Button x:Name="AcceptButtonGenre" Click="AcceptButtonGenre_Click"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    Content="ACCEPT" VerticalAlignment="Bottom"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                         IsCancel="True" Margin="0 8 8 0" 
+                         Command="materialDesign:DialogHost.CloseDialogCommand">
+                                <Button.CommandParameter>
+                                    <system:Boolean>False</system:Boolean>
+                                </Button.CommandParameter>
+                                CANCEL
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                </materialDesign:DialogHost.DialogContent>
+
+            </materialDesign:DialogHost>
 
         </Grid>
     </Grid>

@@ -40,14 +40,26 @@
 
         <Border Margin="5" Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="2" CornerRadius="2">
             <StackPanel Grid.Row="1" Grid.Column="0">
-                <DatePicker Margin="10"
+                <DatePicker Margin="10" DataContextChanged="DateRentStartChanged"
                         materialDesign:HintAssist.Hint="Date starts"
-                         Name="DatePickerStartRents1" Background="#F0F0F0"
-                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                         Name="DatePickerStartRents" Background="#F0F0F0"
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" CalendarClosed="DatePickerStartRents_CalendarClosed" />
                 <DatePicker Margin="10"
                 materialDesign:HintAssist.Hint="Date ends"
-                        Name="DatePickerEndRents1" Background="#F0F0F0" 
-                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                        Name="DatePickerEndRents" Background="#F0F0F0" 
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" CalendarClosed="DatePickerEndRents_CalendarClosed" />
+
+                <Button Grid.Column="0" Grid.Row="0" Name="ButtonApplyRents"
+                BorderThickness="3"
+                Margin="5"
+                Width="auto"
+                Height="auto"
+                Content="Apply"
+                Foreground="Black"
+                FontSize="20"
+                Style="{StaticResource MaterialDesignOutlinedLightButton}" Click="ButtonApplyRents_Click">
+
+                </Button>
             </StackPanel>
         </Border>
         <Border Grid.Column="1" Grid.Row="1" Margin="7" CornerRadius="3" BorderThickness="3" BorderBrush="Black">
@@ -134,12 +146,22 @@
             <StackPanel Grid.Row="1" Grid.Column="0">
                 <DatePicker Margin="10"
                         materialDesign:HintAssist.Hint="Date starts"
-                         Name="DatePickerStartRents" Background="#F0F0F0"
-                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                         Name="DatePickerStartActions" Background="#F0F0F0"
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" CalendarClosed="DatePickerStartActions_CalendarClosed" />
                 <DatePicker Margin="10"
                 materialDesign:HintAssist.Hint="Date ends"
-                        Name="DatePickerEndRents" Background="#F0F0F0" 
-                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                        Name="DatePickerEndActions" Background="#F0F0F0" 
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" CalendarClosed="DatePickerEndActions_CalendarClosed" />
+
+                <Button Grid.Column="0" Grid.Row="0" Name="ButtonApplyActions"
+                BorderThickness="3"
+                Margin="5"
+                Width="auto"
+                Height="auto"
+                Content="Apply"
+                Foreground="Black"
+                FontSize="20"
+                Style="{StaticResource MaterialDesignOutlinedLightButton}" Click="ButtonApplyActions_Click"/>
             </StackPanel>
         </Border>
         <Border Grid.Column="1" Grid.Row="3" Margin="7" CornerRadius="3" BorderThickness="3" BorderBrush="Black">
