@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="BooksWindow" Height="700" Width="1700">
-    <Grid>
+    <Grid Name="BookGrid">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />

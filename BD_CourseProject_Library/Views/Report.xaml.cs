@@ -22,11 +22,13 @@ namespace BD_CourseProject_Library.Views
         public Report()
         {
             InitializeComponent();
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == true)
-            {
-                printDialog.PrintVisual(grid, "My First Print Job");
-            }
+
+
+            //PrintDialog printDialog = new PrintDialog();
+            //if (printDialog.ShowDialog() == true)
+            //{
+            //    printDialog.PrintVisual(BookGrid, "My First Print Job");
+            //}
         }
     }
 }

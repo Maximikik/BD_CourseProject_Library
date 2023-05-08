@@ -8,6 +8,7 @@ using BD_CourseProject_Library.Models;
 using MaterialDesignThemes.Wpf;
 using BD_CourseProject_Library.Controllers.Authors.Add;
 using BD_CourseProject_Library.Controllers.Genres.Add;
+using System.Windows.Controls;
 
 namespace BD_CourseProject_Library.Views
 {
