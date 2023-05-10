@@ -14,9 +14,13 @@ namespace BD_CourseProject_Library.Controllers.Records.Edit
 
                 if (element != null)
                 {
-                    if (command.BookId != string.Empty)
+                    if (command.BookName != string.Empty)
                     {
-                        element.BookId = Convert.ToInt32(command.BookId);
+                        var book = _context.Books.FirstOrDefault(entity => entity.Name == command.BookName);
+                        if (book != null)
+                        {
+                            element.BookId = book.Id;
+                        }
                     }
                     if (command.RentDateStart != default)
                     {

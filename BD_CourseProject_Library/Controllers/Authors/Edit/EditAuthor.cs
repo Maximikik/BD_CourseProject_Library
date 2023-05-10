@@ -1,7 +1,6 @@
 ﻿using BD_CourseProject_Library.Models;
 using System;
 using System.Linq;
-using System.Threading;
 
 namespace BD_CourseProject_Library.Controllers.Authors.Edit
 {

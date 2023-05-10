@@ -1,6 +1,5 @@
 ﻿using BD_CourseProject_Library.Controllers.Books.Add;
 using BD_CourseProject_Library.Controllers.Clients.Add;
-using BD_CourseProject_Library.Controllers.Genres.Add;
 using BD_CourseProject_Library.Controllers.Records.Add;
 using BD_CourseProject_Library.Controllers.Records.Delete;
 using BD_CourseProject_Library.Controllers.Records.Edit;
@@ -31,7 +30,7 @@ namespace BD_CourseProject_Library.Views
         {
             MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
 
-            ComboBoxBookIdEdit.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+            ComboBoxBookIdEdit.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Name).ToList();
             ComboBoxClientId.ItemsSource = _context.Clients.OrderBy(x => x.Id).Select(x => x.Id).ToList();
             ComboBoxClientIdEdit.ItemsSource = _context.Clients.OrderBy(x => x.Id).Select(x => x.Id).ToList();
             ComboBoxRecordIdDelete.ItemsSource = _context.Records.OrderBy(x => x.Id).Select(x => x.Id).ToList();
@@ -113,7 +112,7 @@ namespace BD_CourseProject_Library.Views
             var command = new EditRecordCommand()
             {
                 Id = ComboBoxRecordIdEdit.Text,
-                BookId = ComboBoxBookIdEdit.Text,
+                BookName = ComboBoxBookIdEdit.Text,
                 ClientId = ComboBoxClientIdEdit.Text,
             };
 
@@ -350,7 +349,7 @@ namespace BD_CourseProject_Library.Views
                     textBoxName.Clear();
                     textBoxQuantity.Clear();
 
-                    ComboBoxBookIdEdit.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+                    ComboBoxBookIdEdit.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Name).ToList();
                     ComboBoxBookName.ItemsSource = _context.Books.OrderBy(x => x.Name).Select(x => x.Name).ToList();
                 }
             }

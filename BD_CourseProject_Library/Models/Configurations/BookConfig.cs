@@ -13,7 +13,7 @@ namespace BD_CourseProject_Library.Models.Configurations
     {
         public void Configure(EntityTypeBuilder<Book> builder)
         {
-            
+
         }
     }
 }

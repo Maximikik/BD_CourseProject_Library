@@ -33,5 +33,3 @@ namespace BD_CourseProject_Library.Controllers.Authors.Delete
         }
     }
 }
-
-//Microsoft.EntityFrameworkCore.DbUpdateException

@@ -90,7 +90,7 @@
                           materialDesign:HintAssist.Hint="Record Id" Background="#F0F0F0">
                     </ComboBox>
                     <ComboBox Name="ComboBoxBookIdEdit" Margin="5" Padding="16 10 10 10"
-                          materialDesign:HintAssist.Hint="Book Id" Background="#F0F0F0">
+                          materialDesign:HintAssist.Hint="Book name" Background="#F0F0F0">
                     </ComboBox>
                     <DatePicker materialDesign:HintAssist.Hint="Rent date starts"
                         Name="DatePickerStartEdit" Margin="5 4 5 0"  

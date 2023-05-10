@@ -5,7 +5,7 @@ namespace BD_CourseProject_Library.Controllers.Records.Edit
     public class EditRecordCommand
     {
         public string Id { get; set; } = null!;
-        public string BookId { get; set; } = null!;
+        public string BookName { get; set; } = null!;
 
         public DateTime RentDateStart { get; set; } 
 
