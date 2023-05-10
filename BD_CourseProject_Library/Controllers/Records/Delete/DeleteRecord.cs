@@ -1,4 +1,5 @@
 ﻿using BD_CourseProject_Library.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,17 @@ namespace BD_CourseProject_Library.Controllers.Records.Delete
 
             if (element != null)
             {
-                _context.Records.Remove(element);
-                _context.SaveChanges();
+                try
+                {
+                    _context.Records.Remove(element);
+                    _context.SaveChanges();
 
-                _context.ReportActions.Add(new ReportAction { Table = "Records", Operation = Operations.Delete.ToString(), DateOffered = DateTime.Now });
+                    _context.ReportActions.Add(new ReportAction { Table = "Records", Operation = Operations.Delete.ToString(), DateOffered = DateTime.Now });
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
 
                 return true;
             }

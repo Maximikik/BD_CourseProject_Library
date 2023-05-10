@@ -20,12 +20,15 @@ namespace BD_CourseProject_Library
         {
             InitializeComponent();
 
+            DbInitialiser.Initialise(new LibraryDbContext());
+
             authors = new AuthorsWindow();
             books = new BooksWindow();
             genres = new GenresWindow();
             clients = new ClientsWindow();
             records = new RecordsWindow();
             journal = new Journal();
+            report = new Report();
         }
 
         private void ButtonAuthors_Click(object sender, RoutedEventArgs e)
@@ -67,6 +70,7 @@ namespace BD_CourseProject_Library
         private void ButtonReports_Click(object sender, RoutedEventArgs e)
         {
             report.Show();
+            this.Hide();
         }
     }
 }

@@ -31,12 +31,12 @@ namespace BD_CourseProject_Library.Views
         {
             MainList.ItemsSource = RecordDisplayConfigurator.GetRecords(_context);
 
-            ComboBoxBookIdEdit.ItemsSource = _context.Books.Select(x => x.Id).ToList();
-            ComboBoxClientId.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
-            ComboBoxClientIdEdit.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
-            ComboBoxRecordIdDelete.ItemsSource = _context.Records.Select(x => x.Id).ToList();
-            ComboBoxRecordIdEdit.ItemsSource = _context.Records.Select(x => x.Id).ToList();
-            ComboBoxBookName.ItemsSource = _context.Books.Select(x => x.Name).ToList();
+            ComboBoxBookIdEdit.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+            ComboBoxClientId.ItemsSource = _context.Clients.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+            ComboBoxClientIdEdit.ItemsSource = _context.Clients.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+            ComboBoxRecordIdDelete.ItemsSource = _context.Records.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+            ComboBoxRecordIdEdit.ItemsSource = _context.Records.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+            ComboBoxBookName.ItemsSource = _context.Books.OrderBy(x => x.Name).Select(x => x.Name).ToList();
 
             ComboBoxAuthorId.ItemsSource = _context.Authors.Select(x => x.Name).ToList();
             ComboBoxGenreId.ItemsSource = _context.Genres.Select(x => x.Name).ToList();
@@ -89,8 +89,8 @@ namespace BD_CourseProject_Library.Views
                 ComboBoxRecordIdDelete.ItemsSource = null;
                 ComboBoxRecordIdEdit.ItemsSource = null;
 
-                ComboBoxRecordIdDelete.ItemsSource = _context.Records.Select(x => x.Id).ToList();
-                ComboBoxRecordIdEdit.ItemsSource = _context.Records.Select(x => x.Id).ToList();
+                ComboBoxRecordIdDelete.ItemsSource = _context.Records.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+                ComboBoxRecordIdEdit.ItemsSource = _context.Records.OrderBy(x => x.Id).Select(x => x.Id).ToList();
 
                 DatePickerStart.Text = string.Empty;
                 DatePickerEnd.Text = string.Empty;
@@ -164,8 +164,8 @@ namespace BD_CourseProject_Library.Views
                     ComboBoxRecordIdDelete.ItemsSource = null;
                     ComboBoxRecordIdEdit.ItemsSource = null;
 
-                    ComboBoxRecordIdDelete.ItemsSource = _context.Records.Select(x => x.Id).ToList();
-                    ComboBoxRecordIdEdit.ItemsSource = _context.Records.Select(x => x.Id).ToList();
+                    ComboBoxRecordIdDelete.ItemsSource = _context.Records.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+                    ComboBoxRecordIdEdit.ItemsSource = _context.Records.OrderBy(x => x.Id).Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -350,8 +350,8 @@ namespace BD_CourseProject_Library.Views
                     textBoxName.Clear();
                     textBoxQuantity.Clear();
 
-                    ComboBoxBookIdEdit.ItemsSource = _context.Books.Select(x => x.Id).ToList();
-                    ComboBoxBookName.ItemsSource = _context.Books.Select(x => x.Name).ToList();
+                    ComboBoxBookIdEdit.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+                    ComboBoxBookName.ItemsSource = _context.Books.OrderBy(x => x.Name).Select(x => x.Name).ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -375,8 +375,8 @@ namespace BD_CourseProject_Library.Views
                     TextBoxClientSurname.Clear();
                     TextBoxClientPhoneNumber.Clear();
 
-                    ComboBoxClientId.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
-                    ComboBoxClientIdEdit.ItemsSource = _context.Clients.Select(x => x.Id).ToList();
+                    ComboBoxClientId.ItemsSource = _context.Clients.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+                    ComboBoxClientIdEdit.ItemsSource = _context.Clients.OrderBy(x => x.Id).Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");

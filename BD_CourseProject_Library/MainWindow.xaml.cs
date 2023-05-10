@@ -23,8 +23,6 @@ namespace BD_CourseProject_Library
         public MainWindow()
         {
             InitializeComponent();
-            DbInitialiser.Initialise(new LibraryDbContext());
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

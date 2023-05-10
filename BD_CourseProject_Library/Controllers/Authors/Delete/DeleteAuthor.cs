@@ -1,4 +1,5 @@
 ﻿using BD_CourseProject_Library.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
@@ -12,10 +13,18 @@ namespace BD_CourseProject_Library.Controllers.Authors.Delete
 
             if (element != null)
             {
-                _context.Authors.Remove(element);
-                _context.ReportActions.Add(new ReportAction { Table = "Authors", Operation = Operations.Delete.ToString(), DateOffered = DateTime.Now });
+                try
+                {
+                    _context.Authors.Remove(element);
+                    _context.ReportActions.Add(new ReportAction { Table = "Authors", Operation = Operations.Delete.ToString(), DateOffered = DateTime.Now });
 
-                _context.SaveChanges();
+                    _context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+                
 
                 return true;
             }
@@ -24,3 +33,5 @@ namespace BD_CourseProject_Library.Controllers.Authors.Delete
         }
     }
 }
+
+//Microsoft.EntityFrameworkCore.DbUpdateException

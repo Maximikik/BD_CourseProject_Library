@@ -31,12 +31,12 @@ namespace BD_CourseProject_Library.Views
         {
             MainList.ItemsSource = _context.Books.ToList();
 
-            ComboBoxAuthorId.ItemsSource = _context.Authors.Select(x => x.Name).ToList();
-            ComboBoxGenreId.ItemsSource = _context.Genres.Select(x => x.Name).ToList();
-            ComboBoxAuthorIdEdit.ItemsSource = _context.Authors.Select(x => x.Name).ToList();
-            ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Name).ToList();
-            ComboBoxIdDelete.ItemsSource = _context.Books.Select(x => x.Id).ToList();
-            ComboBoxIdEdit.ItemsSource = _context.Books.Select(x => x.Id).ToList();
+            ComboBoxAuthorId.ItemsSource = _context.Authors.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+            ComboBoxAuthorIdEdit.ItemsSource = _context.Authors.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+            ComboBoxGenreId.ItemsSource = _context.Genres.OrderBy(x => x.Id).Select(x => x.Name).ToList();
+            ComboBoxGenreIdEdit.ItemsSource = _context.Genres.OrderBy(x => x.Id).Select(x => x.Name).ToList();
+            ComboBoxIdDelete.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+            ComboBoxIdEdit.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Id).ToList();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
@@ -71,8 +71,8 @@ namespace BD_CourseProject_Library.Views
                 ComboBoxIdDelete.ItemsSource = null;
                 ComboBoxIdEdit.ItemsSource = null;
 
-                ComboBoxIdDelete.ItemsSource = _context.Books.Select(x => x.Id).ToList();
-                ComboBoxIdEdit.ItemsSource = _context.Books.Select(x => x.Id).ToList();
+                ComboBoxIdDelete.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+                ComboBoxIdEdit.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Id).ToList();
             }
             ClearAddTextBoxes();
         }
@@ -97,8 +97,8 @@ namespace BD_CourseProject_Library.Views
                     ComboBoxIdDelete.ItemsSource = null;
                     ComboBoxIdEdit.ItemsSource = null;
 
-                    ComboBoxIdDelete.ItemsSource = _context.Books.Select(x => x.Id).ToList();
-                    ComboBoxIdEdit.ItemsSource = _context.Books.Select(x => x.Id).ToList();
+                    ComboBoxIdDelete.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+                    ComboBoxIdEdit.ItemsSource = _context.Books.OrderBy(x => x.Id).Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -296,9 +296,9 @@ namespace BD_CourseProject_Library.Views
 
                     NameTextBox.Clear();
 
-                    ComboBoxAuthorId.ItemsSource = _context.Authors.Select(x => x.Name).ToList();
+                    ComboBoxAuthorId.ItemsSource = _context.Authors.OrderBy(x => x.Id).Select(x => x.Id).ToList();
 
-                    ComboBoxAuthorIdEdit.ItemsSource = _context.Authors.Select(x => x.Name).ToList();
+                    ComboBoxAuthorIdEdit.ItemsSource = _context.Authors.OrderBy(x => x.Id).Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -320,9 +320,9 @@ namespace BD_CourseProject_Library.Views
 
                     NameTextBoxGenre.Clear();
 
-                    ComboBoxGenreId.ItemsSource = _context.Genres.Select(x => x.Name).ToList();
+                    ComboBoxGenreId.ItemsSource = _context.Genres.OrderBy(x => x.Id).Select(x => x.Name).ToList();
 
-                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Name).ToList();
+                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.OrderBy(x => x.Id).Select(x => x.Name).ToList();
                 }
             }
             else MessageBox.Show("Error!");

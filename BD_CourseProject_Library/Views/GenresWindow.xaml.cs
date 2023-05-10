@@ -29,8 +29,8 @@ namespace BD_CourseProject_Library.Views
         {
             MainList.ItemsSource = _context.Genres.ToList();
 
-            ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
-            ComboBoxGenreIdDelete.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
+            ComboBoxGenreIdEdit.ItemsSource = _context.Genres.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+            ComboBoxGenreIdDelete.ItemsSource = _context.Genres.OrderBy(x => x.Id).Select(x => x.Id).ToList();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
@@ -51,8 +51,8 @@ namespace BD_CourseProject_Library.Views
                     ComboBoxGenreIdEdit.ItemsSource = null;
                     ComboBoxGenreIdDelete.ItemsSource = null; 
 
-                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
-                    ComboBoxGenreIdDelete.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
+                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+                    ComboBoxGenreIdDelete.ItemsSource = _context.Genres.OrderBy(x => x.Id).Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -78,7 +78,7 @@ namespace BD_CourseProject_Library.Views
                     MainList.ItemsSource = _context.Genres.ToList();
 
                     ComboBoxGenreIdEdit.ItemsSource = null;
-                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
+                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.OrderBy(x => x.Id).Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");
@@ -106,8 +106,8 @@ namespace BD_CourseProject_Library.Views
                     ComboBoxGenreIdEdit.ItemsSource = null;
                     ComboBoxGenreIdDelete.ItemsSource = null;
 
-                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
-                    ComboBoxGenreIdDelete.ItemsSource = _context.Genres.Select(x => x.Id).ToList();
+                    ComboBoxGenreIdEdit.ItemsSource = _context.Genres.OrderBy(x => x.Id).Select(x => x.Id).ToList();
+                    ComboBoxGenreIdDelete.ItemsSource = _context.Genres.OrderBy(x => x.Id).Select(x => x.Id).ToList();
                 }
             }
             else MessageBox.Show("Error!");

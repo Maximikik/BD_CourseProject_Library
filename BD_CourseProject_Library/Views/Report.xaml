@@ -3,10 +3,80 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:BD_CourseProject_Library.Views"
         mc:Ignorable="d"
-        Title="Report" Height="450" Width="800">
+        Title="Report" Height="800" Width="1400">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0">
+            <Button Margin="3" Height="44" HorizontalAlignment="Right"
+                Content="{materialDesign:PackIcon Kind=ArrowLeft}" Click="ButtonBack_Click"
+                    Style="{StaticResource MaterialDesignPaperLightButton}"/>
+            <Button Margin="3" Height="44"
+                Content="{materialDesign:PackIcon Kind=Printer}" Click="ButtonPrint_Click"
+                    Style="{StaticResource MaterialDesignPaperLightButton}"/>
+            <Button Margin="3" Height="44"
+                Content="{materialDesign:PackIcon Kind=FileWord}" Click="ButtonSave_Click"
+                    Style="{StaticResource MaterialDesignPaperLightButton}"/>
+        </WrapPanel>
+        <Grid x:Name="GridToPring" Grid.Row="1" Margin="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3.6*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <ListView Name="MainList"  Grid.Row="1"  Foreground="Black" FontSize="14" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="120" Header="Book" DisplayMemberBinding="{Binding book}" />
+                        <GridViewColumn Header="Author" DisplayMemberBinding="{Binding author}"/>
+                        <GridViewColumn Header="Genre" DisplayMemberBinding="{Binding genre}"/>
+                        <GridViewColumn Header="Client Id" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Client name" DisplayMemberBinding="{Binding clientName}"/>
+                        <GridViewColumn Width="120" Header="Surname" DisplayMemberBinding="{Binding clientSurname}"/>
+                        <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding clientPhoneNumber}"/>
+                        <GridViewColumn Header="Rent started" DisplayMemberBinding="{Binding rentStart}"/>
+                        <GridViewColumn Header="Rent ends" DisplayMemberBinding="{Binding rentEnd}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <WrapPanel HorizontalAlignment="Right">
+                <Label FontSize="25" VerticalAlignment="Center" Margin="0 0 250 0">Library perfomance report</Label>
+                <StackPanel Margin="0 0 0 0">
+                    <TextBox x:Name="TextBoxWereRented" FontSize="20" IsReadOnly="True" Margin="8">Books were rented: </TextBox>
+                    <TextBox x:Name="TextBoxClients" FontSize="20" IsReadOnly="True" Margin="8">Clients: </TextBox>
+                </StackPanel>
+            </WrapPanel>
+            <TextBox x:Name="TBMadeIn" Grid.Row="1" Grid.Column="1" TextWrapping="WrapWithOverflow"
+                     HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                     FontSize="20" FontWeight="Bold"
+                     >Report have been done in:  </TextBox>
+            <WrapPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Border Background="#F0F0F0">
+                    <WrapPanel>
+                        <StackPanel Margin="0 0 30 0">
+                            <DatePicker materialDesign:HintAssist.Hint="Rent date starts"
+                                    FontSize="20"
+                                 Name="DatePickerStart" Background="#F0F0F0"  Margin="8" CalendarClosed="DatePickerStart_DataContextChanged"/>
+                            <DatePicker materialDesign:HintAssist.Hint="Rent date ends"
+                                    FontSize="20"
+                                Name="DatePickerEnd" Background="#F0F0F0"  Margin="8" CalendarClosed="DatePickerEnd_DataContextChanged"/>
+                        </StackPanel>
+                    </WrapPanel>
+                </Border>
+            </WrapPanel>
+
+        </Grid>
     </Grid>
 </Window>

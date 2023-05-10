@@ -21,8 +21,19 @@ namespace BD_CourseProject_Library.Views
 
             _context = new LibraryDbContext();
 
+            ConfigureWindow();
+        }
+
+        private void ConfigureWindow()
+        {
             ListActions.ItemsSource = ReportActionsDisplayConfigurator.GetActions(_context);
             ListRents.ItemsSource = _context.ReportRents.ToList();
+
+            DatePickerStartActions.DisplayDateStart = DateTime.Parse("01-Jan-2015");
+            DatePickerEndActions.DisplayDateEnd = DateTime.Parse("01-Jan-2030");
+
+            DatePickerStartRents.DisplayDateStart = DateTime.Parse("01-Jan-2015");
+            DatePickerEndRents.DisplayDateEnd = DateTime.Parse("01-Jan-2030");
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)

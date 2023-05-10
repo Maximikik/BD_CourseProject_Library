@@ -4,7 +4,7 @@
     {
         public static void Initialise(LibraryDbContext context)
         {
-            context.Database.EnsureCreated();
+            //context.Database.EnsureCreated();
         }
     }
 }

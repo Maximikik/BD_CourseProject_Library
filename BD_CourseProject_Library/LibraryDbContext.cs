@@ -1,5 +1,6 @@
 ﻿using BD_CourseProject_Library.Models;
 using BD_CourseProject_Library.Models.Configurations;
+using BD_CourseProject_Library.Models.DisplayConfigs;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -14,14 +15,17 @@ namespace BD_CourseProject_Library
         public DbSet<Record> Records { get; set; }
         public DbSet<ReportAction> ReportActions { get; set; }
         public DbSet<ReportRent> ReportRents { get; set; }
+        public DbSet<ReportAllRents> ReportAllRents { get; set; }
 
-        public LibraryDbContext() { }
+        public LibraryDbContext() : base() 
+        {
+            Database.EnsureCreated();
+        }
 
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=localhost;Database=Library;Trusted_Connection=true;Encrypt=false;TrustServerCertificate=false");
-            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

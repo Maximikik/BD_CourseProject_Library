@@ -1,4 +1,5 @@
 ﻿using BD_CourseProject_Library.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,18 @@ namespace BD_CourseProject_Library.Controllers.Genres.Delete
 
             if (element != null)
             {
-                _context.Genres.Remove(element);
-                _context.ReportActions.Add(new ReportAction { Table = "Delete", Operation = Operations.Delete.ToString(), DateOffered = DateTime.Now });
+                try
+                {
+                    _context.Genres.Remove(element);
+                    _context.ReportActions.Add(new ReportAction { Table = "Delete", Operation = Operations.Delete.ToString(), DateOffered = DateTime.Now });
 
-                _context.SaveChanges();
+                    _context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+
 
                 return true;
             }
